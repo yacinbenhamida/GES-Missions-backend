@@ -1,0 +1,19 @@
+package com.rached.services;
+
+import java.io.Serializable;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+
+import com.rached.model.Departement;
+import com.rached.model.Mission;
+
+public interface MissionRepository extends CrudRepository<Mission, Serializable> {
+	@Query("select m from Mission m where m.departement.codeDep = ?1")
+	List<Mission>getAllMissionsOfDepartement(String codeDep);
+	@Query("select MAX(m.numMission) from Mission m where m.departement.codeDep = ?1")
+	Long getLatestCodeMissionOfDep(String codeDep);
+	@Query("select m from Mission m where m.numMission = ?1")
+	Mission getMissionByNum(long numMiss);
+}

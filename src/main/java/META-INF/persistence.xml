@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="RACHED" transaction-type="RESOURCE_LOCAL">
+		<class>com.rached.model.AvoirBudgDep</class>
+		<class>com.rached.model.AvoirBudgProg</class>
+		<class>com.rached.model.Categorie</class>
+		<class>com.rached.model.Classe</class>
+		<class>com.rached.model.Departement</class>
+		<class>com.rached.model.Fonction</class>
+		<class>com.rached.model.Grade</class>
+		<class>com.rached.model.MajBudgDep</class>
+		<class>com.rached.model.MajBudgProg</class>
+		<class>com.rached.model.Motcle</class>
+		<class>com.rached.model.Pays</class>
+		<class>com.rached.model.Projet</class>
+		<class>com.rached.model.Theme</class>
+		<class>com.rached.model.TypeDep</class>
+		<class>com.rached.model.UserStruct</class>
+		<class>com.rached.model.Utilisateur</class>
+		<class>com.rached.model.Zonepays</class>
+		<class>com.rached.model.AffectMissDep</class>
+		<class>com.rached.model.Missionaire</class>
+		<class>com.rached.model.Mission</class>
+		<class>com.rached.model.OrdreMission</class>
+		<class>com.rached.model.Concerne</class>
+		<class>com.rached.model.AvoirFrai</class>
+		<class>com.rached.model.TypeFrai</class>
+		<class>com.rached.model.PaysFrai</class>
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+			<property name="javax.persistence.jdbc.user" value="stage"/>
+			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+			<property name="javax.persistence.jdbc.password" value="stage"/>
+		</properties>	
+	</persistence-unit>
+</persistence>
