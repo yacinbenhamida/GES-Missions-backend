@@ -11,5 +11,5 @@ public interface AvoirFraiService extends Services<AvoirFrai> {
 	void deleteType(long idtype);
 	TypeFrai getTypeById(long idtype);
 	List<TypeFrai> getAllTypes();
-	
+	AvoirFrai getAvFraisInsere(AvoirFrai av);
 }

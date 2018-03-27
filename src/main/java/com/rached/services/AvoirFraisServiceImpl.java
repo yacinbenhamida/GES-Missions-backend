@@ -95,4 +95,12 @@ public class AvoirFraisServiceImpl implements AvoirFraiService {
 		return res;
 	}
 
+	@Override
+	public AvoirFrai getAvFraisInsere(AvoirFrai av) {
+		return frais.getAvoirFraiInseree(av.getCodeProg(), av.getCodeSupport(), av.getObservation(), av.getSupport(), av.getValeurPrevue(), av.getValeurReel(), av.getTypeFrai());
+	}
+
+
+
+
 }

@@ -52,8 +52,10 @@ public class FraisPaysController {
 	}
 	@RequestMapping(value = "/insertPaysFrais", method = RequestMethod.POST )
 	public PaysFrai insertPFrais(@RequestBody PaysFrai elem) {
-		elem.setPays(implpays.getRecordById(elem.getPays().getIdpays()));
-		elem.setAvoirfrais(avoirFrais.getRecordById(elem.getAvoirfrais().getIdAvoirfrais()));
+		elem.getAvoirfrais().setTypeFrai(impltypefrais.getRecordBycode(elem.getAvoirfrais().getTypeFrai().getCodeTypefr()));
+		avoirFrais.insertRecord(elem.getAvoirfrais());
+		elem.setAvoirfrais(avoirFrais.getAvFraisInsere(elem.getAvoirfrais()));
+		System.out.println(elem.getAvoirfrais()+" ");
 		return implfrais.insertRecord(elem);
 	}
 	@RequestMapping(value = "/updatePaysFrais", method = RequestMethod.POST)

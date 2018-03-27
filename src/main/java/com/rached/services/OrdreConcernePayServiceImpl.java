@@ -66,4 +66,9 @@ public class OrdreConcernePayServiceImpl implements OrdreConcernePayService {
 		concerne.delete(valueOf);
 	}
 
+	@Override
+	public List<Concerne> getAllConcerneoford(long idordre) {
+		return concerne.getAllConcerneoford(idordre);
+	}
+
 }

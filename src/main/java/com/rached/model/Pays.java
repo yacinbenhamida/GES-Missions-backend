@@ -140,5 +140,12 @@ public class Pays implements Serializable {
 
 		return frais;
 	}
+
+	@Override
+	public String toString() {
+		return "Pays [idpays=" + idpays + ", codepays=" + codepays + ", langue=" + langue + ", libPaysAr=" + libPaysAr
+				+ ", libPaysFr=" + libPaysFr + ", zonepays=" + zonepays + ", concerne=" + concerne + ", paysfrai="
+				+ paysfrai + "]";
+	}
 	
 }

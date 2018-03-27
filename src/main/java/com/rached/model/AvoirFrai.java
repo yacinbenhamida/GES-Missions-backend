@@ -25,7 +25,7 @@ public class AvoirFrai implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="AVOIR_FRAIS_IDAVOIRFRAIS_GENERATOR")
 	@Column(name="ID_AVOIRFRAIS")
 	private long idAvoirfrais;
-
+	
 	@Column(name="CODE_PROG")
 	private long codeProg;
 
@@ -127,6 +127,8 @@ public class AvoirFrai implements Serializable {
 	public void setPaysfrai(List<PaysFrai> paysfrai) {
 		this.paysfrai = paysfrai;
 	}
+	
+	
 
 	public PaysFrai addPaysFrai(PaysFrai frais) {
 		getPaysfrai().add(frais);
@@ -141,4 +143,12 @@ public class AvoirFrai implements Serializable {
 
 		return frais;
 	}
+
+	@Override
+	public String toString() {
+		return "AvoirFrai [idAvoirfrais=" + idAvoirfrais + ", codeProg=" + codeProg + ", codeSupport=" + codeSupport
+				+ ", observation=" + observation + ", support=" + support + ", valeurPrevue=" + valeurPrevue
+				+ ", valeurReel=" + valeurReel ;
+	}
+	
 }

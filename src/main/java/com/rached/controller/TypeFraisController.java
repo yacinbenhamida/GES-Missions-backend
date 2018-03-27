@@ -25,8 +25,8 @@ public class TypeFraisController {
 		return impl.getAllRecords();
 	}
 	@RequestMapping(value = "/findType/{code}", method = RequestMethod.GET)
-	public TypeFrai getType(@PathVariable("code") Long id) {
-		return impl.getRecordById(Long.valueOf(id));
+	public TypeFrai getType(@PathVariable("code") String id) {
+		return impl.getRecordBycode(id);
 	}
 	@RequestMapping(value = "/insertType", method = RequestMethod.POST )
 	public TypeFrai insertTypeFrais(@RequestBody TypeFrai elem) {

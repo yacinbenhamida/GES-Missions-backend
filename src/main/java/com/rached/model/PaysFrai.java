@@ -20,7 +20,7 @@ public class PaysFrai implements Serializable {
 	@Column(name="ID_PAYS_FRAIS")
 	private long idPaysFrais;
 
-	@ManyToOne
+	@ManyToOne( cascade = CascadeType.ALL)
 	@JoinColumn(name="ID_AVOIRFRAIS")
 	private AvoirFrai avoirfrais;
 
@@ -53,6 +53,11 @@ public class PaysFrai implements Serializable {
 
 	public void setPays(Pays pays) {
 		this.pays = pays;
+	}
+
+	@Override
+	public String toString() {
+		return "PaysFrai [idPaysFrais=" + idPaysFrais + ", avoirfrais=" + avoirfrais.getIdAvoirfrais() + ", pays=" + pays.getIdpays() + "]";
 	}
 
 	
