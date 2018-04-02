@@ -3,6 +3,9 @@ package com.rached.services;
 import java.util.List;
 
 import com.rached.model.AvoirFrai;
+import com.rached.model.Concerne;
+import com.rached.model.OrdreMission;
+import com.rached.model.Pays;
 import com.rached.model.TypeFrai;
 
 public interface AvoirFraiService extends Services<AvoirFrai> {
@@ -12,4 +15,7 @@ public interface AvoirFraiService extends Services<AvoirFrai> {
 	TypeFrai getTypeById(long idtype);
 	List<TypeFrai> getAllTypes();
 	AvoirFrai getAvFraisInsere(AvoirFrai av);
+	List<AvoirFrai> getAvFraisOfORD(long idord);
+	List<AvoirFrai> getAllFraisDiversOfOrdre(long idordre);
+	AvoirFrai getFraisMissionOfConcerne(Concerne c);
 }

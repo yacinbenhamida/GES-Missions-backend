@@ -60,7 +60,6 @@ public class OrdreMissionsController {
 	public OrdreMission updateOrdMission(@RequestBody OrdreMission elem) {
 		elem.setMission(implmiss.getMissByNum(elem.getMission().getNumMission()));
 		elem.setMissionaire(implmissionaire.getMissByCIN(elem.getMissionaire().getCin()));
-		elem.setEtat("E");
 		 return implordre.updateRecord(elem);
 	}
 	

@@ -5,7 +5,6 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,8 +35,11 @@ public class Missionaire implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name="DATE_NAISSANCE")
 	private Date dateNaissance;
-
-
+	
+	@ManyToOne
+	@JoinColumn(name="ID_GROUPE")
+	private Groupe groupe;
+	
 	@ManyToOne
 	@JoinColumn(name="idgrade")
 	private Grade grade;
@@ -261,6 +263,15 @@ public class Missionaire implements Serializable {
 
 	public void setOrdresMission(List<OrdreMission> ordresMission) {
 		this.ordresMission = ordresMission;
+	}
+
+	
+	public Groupe getGroupe() {
+		return groupe;
+	}
+
+	public void setGroupe(Groupe groupe) {
+		this.groupe = groupe;
 	}
 
 	public OrdreMission addOrdreMission(OrdreMission ordre) {

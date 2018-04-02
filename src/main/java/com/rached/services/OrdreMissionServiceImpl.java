@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.rached.model.AvoirFrai;
 import com.rached.model.OrdreMission;
 @Service
 @Qualifier("ordreMissionServiceImpl")
@@ -75,4 +76,10 @@ public class OrdreMissionServiceImpl implements OrdreMissService {
 	public OrdreMission getOrdMOfMission(long numOrdre, long nummis) {
 		return ordremissions.getOrdreMissionOf(numOrdre, nummis);
 	}
+
+	@Override
+	public OrdreMission getOrdByNum(long numOrd) {
+		return ordremissions.getOrdreMissionByNum(numOrd);
+	}
+	
 }

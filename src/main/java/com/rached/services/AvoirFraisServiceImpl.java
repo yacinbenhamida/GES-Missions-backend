@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.rached.model.AvoirFrai;
+import com.rached.model.Concerne;
+import com.rached.model.Pays;
 import com.rached.model.TypeFrai;
 @Service
 @Qualifier("avoirFraisServiceImpl")
@@ -20,6 +22,8 @@ public class AvoirFraisServiceImpl implements AvoirFraiService {
 	@Autowired
 	TypeFraiRepository typefrais;
 	
+	@Autowired
+	OrdreConcernePaysRepository concerne;
 	
 	@Override
 	public List<AvoirFrai> getAllRecords() {
@@ -97,8 +101,25 @@ public class AvoirFraisServiceImpl implements AvoirFraiService {
 
 	@Override
 	public AvoirFrai getAvFraisInsere(AvoirFrai av) {
-		return frais.getAvoirFraiInseree(av.getCodeProg(), av.getCodeSupport(), av.getObservation(), av.getSupport(), av.getValeurPrevue(), av.getValeurReel(), av.getTypeFrai());
+		return null;
+		//return frais.getA(av.getCodeProg(), av.getCodeSupport(), av.getObservation(), av.getSupport(), av.getValeurPrevue(), av.getValeurReel(), av.getTypeFrai());
 	}
+
+	@Override
+	public List<AvoirFrai> getAvFraisOfORD(long idord) {
+		return frais.getAllFraisOfOrdre(idord);
+	}
+
+	@Override
+	public List<AvoirFrai> getAllFraisDiversOfOrdre(long idordre) {
+		return frais.getAllFraisDiversOfOrdre(idordre);
+	}
+
+	@Override
+	public AvoirFrai getFraisMissionOfConcerne(Concerne c) {
+		return frais.getFraisMissionOfConcerne(c);
+	}
+
 
 
 

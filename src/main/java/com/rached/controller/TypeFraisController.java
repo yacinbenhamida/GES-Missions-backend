@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rached.model.Grade;
 import com.rached.model.TypeFrai;
 import com.rached.services.TypeFraisServicesImpl;
 

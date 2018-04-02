@@ -45,11 +45,6 @@ public class Pays implements Serializable {
 	@JsonIgnore
 	private List<Concerne> concerne = new ArrayList<Concerne>();
 	
-	@OneToMany(mappedBy="pays",cascade = {CascadeType.ALL})
-	@JsonIgnore
-	private List<PaysFrai> paysfrai = new ArrayList<PaysFrai>();
-	public Pays() {
-	}
 
 	public long getIdpays() {
 		return this.idpays;
@@ -120,32 +115,13 @@ public class Pays implements Serializable {
 		return concerne;
 	}
 
-	public List<PaysFrai> getPaysfrai() {
-		return paysfrai;
-	}
-
-	public void setPaysfrai(List<PaysFrai> paysfrai) {
-		this.paysfrai = paysfrai;
-	}
-	public PaysFrai addPaysFrai(PaysFrai frais) {
-		getPaysfrai().add(frais);
-		frais.setPays(this);
-
-		return frais;
-	}
-
-	public PaysFrai removePaysFrai(PaysFrai frais) {
-		getPaysfrai().remove(frais);
-		frais.setPays(null);
-
-		return frais;
-	}
+	
 
 	@Override
 	public String toString() {
 		return "Pays [idpays=" + idpays + ", codepays=" + codepays + ", langue=" + langue + ", libPaysAr=" + libPaysAr
 				+ ", libPaysFr=" + libPaysFr + ", zonepays=" + zonepays + ", concerne=" + concerne + ", paysfrai="
-				+ paysfrai + "]";
+				 + "]";
 	}
 	
 }

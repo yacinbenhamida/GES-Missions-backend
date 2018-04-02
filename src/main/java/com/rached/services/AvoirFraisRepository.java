@@ -1,17 +1,24 @@
 package com.rached.services;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import com.rached.model.AvoirFrai;
+import com.rached.model.Concerne;
 import com.rached.model.TypeFrai;
 
 public interface AvoirFraisRepository extends CrudRepository<AvoirFrai, Serializable> {
-	@Query("select a from AvoirFrai a where a.codeProg = ?1 AND "
-			+ "a.codeSupport = ?2 AND a.observation = ?3 AND a.support = ?4 AND"
-			+ " a.valeurPrevue = ?5 AND a.valeurReel = ?6 AND a.typeFrai = ?7")
-	AvoirFrai getAvoirFraiInseree(long codeprog,long codesupp,String observation,
-			String support,long valprev,long valReel,TypeFrai tf);
+	
+	@Query("select a from AvoirFrai a where a.ordreMission.idOrdre = ?1")
+	List<AvoirFrai> getAllFraisOfOrdre(long idordre);
+	
+	@Query("select a from AvoirFrai a where a.ordreMission.idOrdre = ?1 AND a.typeFrai.codeTypefr != '0808'")
+	List<AvoirFrai> getAllFraisDiversOfOrdre(long idordre);
+	
+	@Query("select a from AvoirFrai a,OrdreMission o,Concerne c where c = ?1 AND o=c.ordre"
+			+ " AND a.ordreMission = o AND a.typeFrai.codeTypefr='0808'")
+	AvoirFrai getFraisMissionOfConcerne(Concerne c);
 }

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rached.model.Categorie;
-import com.rached.model.Classe;
 import com.rached.services.Services;
 
 @RestController

@@ -6,7 +6,6 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +27,9 @@ public class OrdreMission implements Serializable {
 	@Column(name="ID_ORDRE")
 	private long idOrdre;
 	
+	@Column(name="NUM_ORDRE")
+	private long numOrdre;
+	
 	@Column(name="AVANCE")
 	private long avance;
 
@@ -36,16 +38,9 @@ public class OrdreMission implements Serializable {
 	private Date dateArrP;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="DATE_ARR_R")
-	private Date dateArrR;
-
-	@Temporal(TemporalType.DATE)
 	@Column(name="DATE_DEP_P")
 	private Date dateDepP;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="DATE_DEP_R")
-	private Date dateDepR;
 
 	@Column(name="ETAT")
 	private String etat;
@@ -62,9 +57,11 @@ public class OrdreMission implements Serializable {
 	@JsonIgnore
 	private List<Concerne> concerne = new ArrayList<Concerne>();
 	
-	@Column(name="NUM_ORDRE")
-	private long numOrdre;
-
+	
+	@OneToMany(mappedBy="ordreMission",cascade = {CascadeType.ALL})
+	@JsonIgnore
+	private List<AvoirFrai> frais = new ArrayList<AvoirFrai>();
+	
 	private long timbre;
 
 	public OrdreMission() {
@@ -94,13 +91,7 @@ public class OrdreMission implements Serializable {
 		this.dateArrP = dateArrP;
 	}
 
-	public Date getDateArrR() {
-		return this.dateArrR;
-	}
-
-	public void setDateArrR(Date dateArrR) {
-		this.dateArrR = dateArrR;
-	}
+	
 
 	public Date getDateDepP() {
 		return this.dateDepP;
@@ -110,13 +101,6 @@ public class OrdreMission implements Serializable {
 		this.dateDepP = dateDepP;
 	}
 
-	public Date getDateDepR() {
-		return this.dateDepR;
-	}
-
-	public void setDateDepR(Date dateDepR) {
-		this.dateDepR = dateDepR;
-	}
 
 	public String getEtat() {
 		return this.etat;
@@ -167,6 +151,26 @@ public class OrdreMission implements Serializable {
 		this.concerne = concerne;
 	}
 	
+	public List<AvoirFrai> getFrais() {
+		return frais;
+	}
+
+	public void setFrais(List<AvoirFrai> frais) {
+		this.frais = frais;
+	}
+	public AvoirFrai addAvoirFrai(AvoirFrai frais) {
+		getFrais().add(frais);
+		frais.setOrdreMission(this);
+
+		return frais;
+	}
+
+	public AvoirFrai removeAvoirFrai(AvoirFrai frais) {
+		getFrais().remove(frais);
+		frais.setOrdreMission(null);
+
+		return frais;
+	}
 	public Concerne addConcerne(Concerne concerne) {
 		getConcerne().add(concerne);
 		concerne.setOrdre(this);
@@ -180,11 +184,12 @@ public class OrdreMission implements Serializable {
 
 		return concerne;
 	}
+	
 
 	@Override
 	public String toString() {
 		return "OrdreMission [idOrdre=" + idOrdre + ", avance=" + avance + ", dateArrP=" + dateArrP + ", dateArrR="
-				+ dateArrR + ", dateDepP=" + dateDepP + ", dateDepR=" + dateDepR + ", etat=" + etat + ", mission="
+				+   ", dateDepP=" + dateDepP + ", dateDepR="  + ", etat=" + etat + ", mission="
 				+ mission + ", missionaire=" + missionaire + ", numOrdre=" + numOrdre + ", timbre=" + timbre + "]";
 	}
 

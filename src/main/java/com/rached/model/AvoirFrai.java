@@ -5,7 +5,6 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class AvoirFrai implements Serializable {
 	private long codeProg;
 
 	@Column(name="CODE_SUPPORT")
-	private long codeSupport;
+	private String codeSupport;
 
 	@Column(name="OBSERVATION")
 	private String observation;
@@ -41,21 +40,23 @@ public class AvoirFrai implements Serializable {
 	@Column(name="VALEUR_PREVUE")
 	private long valeurPrevue;
 
-	@Column(name="VALEUR_REEL")
-	private long valeurReel;
-
+	@Column(name="NOM_ORG_AR")
+	private String nomOrgAr;
+	
+	@Column(name="NOM_ORG_FR")
+	private String nomOrgFr;
 	//bi-directional many-to-one association to TypeFrai
 	@ManyToOne
 	@JoinColumn(name="IDTYPEFRAIS")
 	private TypeFrai typeFrai;
 
-	@OneToMany(mappedBy="avoirfrais",cascade = {CascadeType.ALL})
-	@JsonIgnore
-	private List<PaysFrai> paysfrai = new ArrayList<PaysFrai>();
+	@ManyToOne
+	@JoinColumn(name="ID_ORDREMISS")
+	private OrdreMission ordreMission;
 	
 	public AvoirFrai() {
 	}
-
+	
 	public long getIdAvoirfrais() {
 		return this.idAvoirfrais;
 	}
@@ -72,11 +73,11 @@ public class AvoirFrai implements Serializable {
 		this.codeProg = codeProg;
 	}
 
-	public long getCodeSupport() {
+	public String getCodeSupport() {
 		return this.codeSupport;
 	}
 
-	public void setCodeSupport(long codeSupport) {
+	public void setCodeSupport(String codeSupport) {
 		this.codeSupport = codeSupport;
 	}
 
@@ -104,13 +105,6 @@ public class AvoirFrai implements Serializable {
 		this.valeurPrevue = valeurPrevue;
 	}
 
-	public long getValeurReel() {
-		return this.valeurReel;
-	}
-
-	public void setValeurReel(long valeurReel) {
-		this.valeurReel = valeurReel;
-	}
 
 	public TypeFrai getTypeFrai() {
 		return this.typeFrai;
@@ -120,35 +114,37 @@ public class AvoirFrai implements Serializable {
 		this.typeFrai = typeFrai;
 	}
 
-	public List<PaysFrai> getPaysfrai() {
-		return paysfrai;
-	}
-
-	public void setPaysfrai(List<PaysFrai> paysfrai) {
-		this.paysfrai = paysfrai;
-	}
-	
 	
 
-	public PaysFrai addPaysFrai(PaysFrai frais) {
-		getPaysfrai().add(frais);
-		frais.setAvoirfrais(this);
-
-		return frais;
+	public String getNomOrgAr() {
+		return nomOrgAr;
 	}
 
-	public PaysFrai removePaysFrai(PaysFrai frais) {
-		getPaysfrai().remove(frais);
-		frais.setAvoirfrais(null);
+	public void setNomOrgAr(String nomOrgAr) {
+		this.nomOrgAr = nomOrgAr;
+	}
 
-		return frais;
+	public String getNomOrgFr() {
+		return nomOrgFr;
+	}
+
+	public void setNomOrgFr(String nomOrgFr) {
+		this.nomOrgFr = nomOrgFr;
+	}
+
+	public OrdreMission getOrdreMission() {
+		return ordreMission;
+	}
+
+	public void setOrdreMission(OrdreMission ordreMission) {
+		this.ordreMission = ordreMission;
 	}
 
 	@Override
 	public String toString() {
 		return "AvoirFrai [idAvoirfrais=" + idAvoirfrais + ", codeProg=" + codeProg + ", codeSupport=" + codeSupport
 				+ ", observation=" + observation + ", support=" + support + ", valeurPrevue=" + valeurPrevue
-				+ ", valeurReel=" + valeurReel ;
+				+ ", valeurReel="  + "ordre miss "+ ordreMission.getNumOrdre();
 	}
 	
 }

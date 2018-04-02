@@ -4,11 +4,9 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 

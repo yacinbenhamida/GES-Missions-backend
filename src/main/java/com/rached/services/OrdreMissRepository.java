@@ -9,7 +9,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.rached.model.OrdreMission;
 
 public interface OrdreMissRepository extends CrudRepository<OrdreMission, Serializable> {
-	@Query("select o from OrdreMission o,Mission m where o.mission = m AND m.departement.codeDep = ?1")
+	@Query("select o from OrdreMission o,Mission m where o.mission = m AND m.departement.codeDep = ?1 AND o.etat='E' ")
 	List<OrdreMission> getAllOrdresOfDep(String codeDep);
 	
 	@Query("select o from OrdreMission o where o.mission.numMission = ?1")
@@ -20,4 +20,7 @@ public interface OrdreMissRepository extends CrudRepository<OrdreMission, Serial
 	
 	@Query("select o from OrdreMission o where o.mission.numMission = ?2 AND o.numOrdre=?1")
 	OrdreMission getOrdreMissionOf(long numord,long numMiss) ;
+	
+	@Query("select o from OrdreMission o where o.numOrdre=?1")
+	OrdreMission getOrdreMissionByNum(long numOrd);
 }

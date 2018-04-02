@@ -9,4 +9,5 @@ public interface OrdreMissService extends Services<OrdreMission> {
 	List<OrdreMission> getAllOrdresOfMission(long codeMiss);
 	Long getLatestNumOrdre(long nummiss);
 	OrdreMission getOrdMOfMission(long numOrdre,long numMISS);
+	OrdreMission getOrdByNum(long numOrd);
 }

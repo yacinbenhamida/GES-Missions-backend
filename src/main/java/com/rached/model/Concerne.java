@@ -2,8 +2,6 @@ package com.rached.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigDecimal;
-
 
 /**
  * The persistent class for the CONCERNE database table.
@@ -19,14 +17,10 @@ public class Concerne implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CONCERNE_IDCONCERNE_GENERATOR")
 	private long idconcerne;
 
-	@Column(name="FRAIS_DIVERS")
-	private long fraisDivers;
 
 	@Column(name="FRAIS_MISSION")
 	private long fraisMission;
 
-	@Column(name="FRAIS_TRANSPORT")
-	private long fraisTransport;
 
 	@Column(name="MOY_TRANSPORT")
 	private String moyTransport;
@@ -34,12 +28,12 @@ public class Concerne implements Serializable {
 	@Column(name="NB_JOURS_P")
 	private long nbJoursP;
 
-	@Column(name="NB_JOURS_R")
-	private long nbJoursR;
 	
 	@Column(name="VILLE")
 	private String ville;
 	
+	@Column(name="ORDRE_DEST")
+	private int ordre_dest;
 	@ManyToOne
 	@JoinColumn(name="ID_ORDRE")
 	private OrdreMission ordre;
@@ -58,13 +52,7 @@ public class Concerne implements Serializable {
 		this.idconcerne = idconcerne;
 	}
 
-	public long getFraisDivers() {
-		return this.fraisDivers;
-	}
-
-	public void setFraisDivers(long fraisDivers) {
-		this.fraisDivers = fraisDivers;
-	}
+	
 
 	public long getFraisMission() {
 		return this.fraisMission;
@@ -74,13 +62,7 @@ public class Concerne implements Serializable {
 		this.fraisMission = fraisMission;
 	}
 
-	public long getFraisTransport() {
-		return this.fraisTransport;
-	}
-
-	public void setFraisTransport(long fraisTransport) {
-		this.fraisTransport = fraisTransport;
-	}
+	
 
 	
 
@@ -100,13 +82,7 @@ public class Concerne implements Serializable {
 		this.nbJoursP = nbJoursP;
 	}
 
-	public long getNbJoursR() {
-		return this.nbJoursR;
-	}
-
-	public void setNbJoursR(long nbJoursR) {
-		this.nbJoursR = nbJoursR;
-	}
+	
 
 	public String getVille() {
 		return this.ville;
@@ -131,6 +107,16 @@ public class Concerne implements Serializable {
 	public void setPays(Pays pays) {
 		this.pays = pays;
 	}
+
+	public int getOrdre_dest() {
+		return ordre_dest;
+	}
+
+	public void setOrdre_dest(int ordre_dest) {
+		this.ordre_dest = ordre_dest;
+	}
+
+	
 	
 	
 	
