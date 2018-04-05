@@ -117,7 +117,7 @@ public class AvoirFraisServiceImpl implements AvoirFraiService {
 
 	@Override
 	public AvoirFrai getFraisMissionOfConcerne(Concerne c) {
-		return frais.getFraisMissionOfConcerne(c);
+		return frais.getFraisMissionOfConcerne(c,c.getIdconcerne());
 	}
 
 

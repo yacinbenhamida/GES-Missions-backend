@@ -23,7 +23,7 @@ public class AffectMissDep implements Serializable {
 	
 	
 	@ManyToOne
-	@JoinColumn(name="CODE_DEP")
+	@JoinColumn(name="CODE_DEP",unique=true)
 	private Departement departement;
 
 	@Temporal(TemporalType.DATE)
@@ -32,7 +32,7 @@ public class AffectMissDep implements Serializable {
 
 	//bi-directional many-to-one association to Missionaire
 	@ManyToOne
-	@JoinColumn(name="ID_MISSIONAIRE")
+	@JoinColumn(name="ID_MISSIONAIRE",unique=true)
 	private Missionaire missionaire;
 
 	public AffectMissDep() {

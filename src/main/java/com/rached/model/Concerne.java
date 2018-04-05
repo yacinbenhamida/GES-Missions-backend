@@ -34,6 +34,7 @@ public class Concerne implements Serializable {
 	
 	@Column(name="ORDRE_DEST")
 	private int ordre_dest;
+	
 	@ManyToOne
 	@JoinColumn(name="ID_ORDRE")
 	private OrdreMission ordre;

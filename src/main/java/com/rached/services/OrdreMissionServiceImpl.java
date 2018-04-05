@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.rached.model.AvoirFrai;
+import com.rached.model.Missionaire;
 import com.rached.model.OrdreMission;
 @Service
 @Qualifier("ordreMissionServiceImpl")
@@ -81,5 +82,7 @@ public class OrdreMissionServiceImpl implements OrdreMissService {
 	public OrdreMission getOrdByNum(long numOrd) {
 		return ordremissions.getOrdreMissionByNum(numOrd);
 	}
+
+	
 	
 }

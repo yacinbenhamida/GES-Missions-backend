@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rached.model.AffectMissDep;
 import com.rached.model.Grade;
 import com.rached.model.Missionaire;
+import com.rached.services.DepartementServices;
 import com.rached.services.MissionaireServices;
 import com.rached.services.Services;
 
@@ -24,6 +25,14 @@ public class MissionairesController {
 	@Autowired
 	@Qualifier("missionaireServicesImpl")
 	private MissionaireServices implmiss;
+	@Autowired
+	@Qualifier("departementServiceImpl")
+	private DepartementServices deps;
+	// not having any missions bettween the two dates
+	@RequestMapping(value="/getallMissionairesNHAM/{dateDep}/{dateArr}/{codeDep}",method= RequestMethod.GET )
+	public List<Missionaire>getallMissionairesNHAM(@PathVariable("dateDep") Date deb,@PathVariable("dateArr") Date end,@PathVariable("codeDep")String dep){
+		return implmiss.getAllMissNotHavingMissions(deb, end, deps.getRecordBycode(dep));
+	}
 	
 	@RequestMapping(value="/getallMissionairesOfDEP/{codeDep}",method= RequestMethod.GET )
 	public List<Missionaire>getAllMissionairesOfDep(@PathVariable("codeDep") String codeDep){

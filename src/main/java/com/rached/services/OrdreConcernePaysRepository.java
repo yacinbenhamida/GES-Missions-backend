@@ -10,6 +10,6 @@ import com.rached.model.Concerne;
 import com.rached.model.OrdreMission;
 
 public interface OrdreConcernePaysRepository extends CrudRepository<Concerne, Serializable> {
-		@Query("select c from Concerne c where c.ordre.idOrdre = ?")
+		@Query("select c from Concerne c where c.ordre.idOrdre = ?1")
 		List<Concerne> getAllConcerneoford(long idordre);
 }

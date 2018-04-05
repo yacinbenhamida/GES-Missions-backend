@@ -2,6 +2,7 @@ package com.rached.services;
 
 import java.util.List;
 
+import com.rached.model.Missionaire;
 import com.rached.model.OrdreMission;
 
 public interface OrdreMissService extends Services<OrdreMission> {
@@ -10,4 +11,5 @@ public interface OrdreMissService extends Services<OrdreMission> {
 	Long getLatestNumOrdre(long nummiss);
 	OrdreMission getOrdMOfMission(long numOrdre,long numMISS);
 	OrdreMission getOrdByNum(long numOrd);
+
 }

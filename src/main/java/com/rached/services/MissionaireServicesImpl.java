@@ -1,6 +1,7 @@
 package com.rached.services;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.rached.model.AffectMissDep;
+import com.rached.model.Departement;
 import com.rached.model.Grade;
 import com.rached.model.Missionaire;
 @Service
@@ -94,5 +96,9 @@ public class MissionaireServicesImpl implements MissionaireServices {
 	@Override
 	public List<Missionaire> getAllMissionairesDep(String codeDep) {
 		return affectation.getAllMissOfDep(codeDep);
+	}
+	@Override
+	public List<Missionaire> getAllMissNotHavingMissions(Date deb, Date end, Departement d) {
+		return missionaires.getAllMissNotHavingMissions(deb, end, d);
 	}
 }

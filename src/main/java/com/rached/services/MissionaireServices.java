@@ -1,8 +1,10 @@
 package com.rached.services;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.rached.model.AffectMissDep;
+import com.rached.model.Departement;
 import com.rached.model.Missionaire;
 
 public interface MissionaireServices extends Services<Missionaire> {
@@ -13,4 +15,5 @@ public interface MissionaireServices extends Services<Missionaire> {
 	void deleteAffectation(long codeAff);
 	AffectMissDep getAffById(long id);
 	List<Missionaire> getAllMissionairesDep(String codeDep);
+	List<Missionaire> getAllMissNotHavingMissions(Date deb, Date end,Departement d);
 }
