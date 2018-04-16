@@ -27,6 +27,7 @@
 		<class>com.rached.model.UserStruct</class>
 		<class>com.rached.model.Utilisateur</class>
 		<class>com.rached.model.Zonepays</class>
+		<class>com.rached.model.Support</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
 			<property name="javax.persistence.jdbc.user" value="stage"/>

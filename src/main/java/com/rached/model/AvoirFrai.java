@@ -3,10 +3,6 @@ package com.rached.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -24,9 +20,9 @@ public class AvoirFrai implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="AVOIR_FRAIS_IDAVOIRFRAIS_GENERATOR")
 	@Column(name="ID_AVOIRFRAIS")
 	private long idAvoirfrais;
-	
-	@Column(name="CODE_PROG")
-	private long codeProg;
+	@ManyToOne
+	@JoinColumn(name="CODE_PROG")
+	private Projet projet;
 
 	@Column(name="CODE_SUPPORT")
 	private String codeSupport;
@@ -34,11 +30,8 @@ public class AvoirFrai implements Serializable {
 	@Column(name="OBSERVATION")
 	private String observation;
 
-	@Column(name="SUPPORT")
-	private String support;
-
 	@Column(name="VALEUR_PREVUE")
-	private long valeurPrevue;
+	private double valeurPrevue;
 
 	@Column(name="NOM_ORG_AR")
 	private String nomOrgAr;
@@ -54,6 +47,11 @@ public class AvoirFrai implements Serializable {
 	@JoinColumn(name="ID_ORDREMISS")
 	private OrdreMission ordreMission;
 	
+	@ManyToOne
+	@JoinColumn(name="SUPPORT")
+	private Support support;
+	
+	
 	public AvoirFrai() {
 	}
 	
@@ -65,12 +63,12 @@ public class AvoirFrai implements Serializable {
 		this.idAvoirfrais = idAvoirfrais;
 	}
 
-	public long getCodeProg() {
-		return this.codeProg;
+	public Projet getProjet() {
+		return this.projet;
 	}
 
-	public void setCodeProg(long codeProg) {
-		this.codeProg = codeProg;
+	public void setProjet(Projet projet) {
+		this.projet = projet;
 	}
 
 	public String getCodeSupport() {
@@ -89,19 +87,19 @@ public class AvoirFrai implements Serializable {
 		this.observation = observation;
 	}
 
-	public String getSupport() {
+	public Support getSupport() {
 		return this.support;
 	}
 
-	public void setSupport(String support) {
+	public void setSupport(Support support) {
 		this.support = support;
 	}
 
-	public long getValeurPrevue() {
+	public double getValeurPrevue() {
 		return this.valeurPrevue;
 	}
 
-	public void setValeurPrevue(long valeurPrevue) {
+	public void setValeurPrevue(double valeurPrevue) {
 		this.valeurPrevue = valeurPrevue;
 	}
 
@@ -142,7 +140,7 @@ public class AvoirFrai implements Serializable {
 
 	@Override
 	public String toString() {
-		return "AvoirFrai [idAvoirfrais=" + idAvoirfrais + ", codeProg=" + codeProg + ", codeSupport=" + codeSupport
+		return "AvoirFrai [idAvoirfrais=" + idAvoirfrais + ", codeProg=" + projet.getLibProjAr() + ", codeSupport=" + codeSupport
 				+ ", observation=" + observation + ", support=" + support + ", valeurPrevue=" + valeurPrevue
 				+ ", valeurReel="  + "ordre miss "+ ordreMission.getNumOrdre();
 	}

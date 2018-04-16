@@ -19,7 +19,7 @@ public class Concerne implements Serializable {
 
 
 	@Column(name="FRAIS_MISSION")
-	private long fraisMission;
+	private double fraisMission;
 
 
 	@Column(name="MOY_TRANSPORT")
@@ -42,6 +42,14 @@ public class Concerne implements Serializable {
 	@JoinColumn(name="IDPAYS")
 	private Pays pays;
 	
+	@Column(name="nbjours_pec_dep")
+	private long nbJoursPecDep;
+	
+	@Column(name="nbjours_pec_orget")
+	private long nbJoursPecOrget;
+	
+	@Column(name="nbjours_pec_proj")
+	private long nbJoursPecProj;
 	public Concerne() {
 	}
 
@@ -55,11 +63,11 @@ public class Concerne implements Serializable {
 
 	
 
-	public long getFraisMission() {
+	public double getFraisMission() {
 		return this.fraisMission;
 	}
 
-	public void setFraisMission(long fraisMission) {
+	public void setFraisMission(double fraisMission) {
 		this.fraisMission = fraisMission;
 	}
 
@@ -115,6 +123,30 @@ public class Concerne implements Serializable {
 
 	public void setOrdre_dest(int ordre_dest) {
 		this.ordre_dest = ordre_dest;
+	}
+
+	public long getNbJoursPecDep() {
+		return nbJoursPecDep;
+	}
+
+	public void setNbJoursPecDep(long nbJoursPecDep) {
+		this.nbJoursPecDep = nbJoursPecDep;
+	}
+
+	public long getNbJoursPecOrget() {
+		return nbJoursPecOrget;
+	}
+
+	public void setNbJoursPecOrget(long nbJoursPecOrget) {
+		this.nbJoursPecOrget = nbJoursPecOrget;
+	}
+
+	public long getNbJoursPecProj() {
+		return nbJoursPecProj;
+	}
+
+	public void setNbJoursPecProj(long nbJoursPecProj) {
+		this.nbJoursPecProj = nbJoursPecProj;
 	}
 
 	

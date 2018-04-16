@@ -1,5 +1,6 @@
 package com.rached.services;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -81,6 +82,11 @@ public class OrdreMissionServiceImpl implements OrdreMissService {
 	@Override
 	public OrdreMission getOrdByNum(long numOrd) {
 		return ordremissions.getOrdreMissionByNum(numOrd);
+	}
+
+	@Override
+	public List<OrdreMission> getAllMissBTDAC(long idpays, Date deb, Date fin, String codeDep) {
+		return ordremissions.getAllMissionsBTDAC(idpays, deb, fin, codeDep);
 	}
 
 	

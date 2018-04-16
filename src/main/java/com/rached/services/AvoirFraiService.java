@@ -6,6 +6,7 @@ import com.rached.model.AvoirFrai;
 import com.rached.model.Concerne;
 import com.rached.model.OrdreMission;
 import com.rached.model.Pays;
+import com.rached.model.Support;
 import com.rached.model.TypeFrai;
 
 public interface AvoirFraiService extends Services<AvoirFrai> {
@@ -18,4 +19,5 @@ public interface AvoirFraiService extends Services<AvoirFrai> {
 	List<AvoirFrai> getAvFraisOfORD(long idord);
 	List<AvoirFrai> getAllFraisDiversOfOrdre(long idordre);
 	AvoirFrai getFraisMissionOfConcerne(Concerne c);
+	Support getSuppByCode(String code);
 }

@@ -31,7 +31,7 @@ public class OrdreMission implements Serializable {
 	private long numOrdre;
 	
 	@Column(name="AVANCE")
-	private long avance;
+	private double avance;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="DATE_ARR_P")
@@ -75,11 +75,11 @@ public class OrdreMission implements Serializable {
 		this.idOrdre = idOrdre;
 	}
 
-	public long getAvance() {
+	public double getAvance() {
 		return this.avance;
 	}
 
-	public void setAvance(long avance) {
+	public void setAvance(double avance) {
 		this.avance = avance;
 	}
 

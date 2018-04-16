@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.rached.model.AvoirFrai;
 import com.rached.model.Concerne;
 import com.rached.model.Pays;
+import com.rached.model.Support;
 import com.rached.model.TypeFrai;
 @Service
 @Qualifier("avoirFraisServiceImpl")
@@ -25,6 +26,8 @@ public class AvoirFraisServiceImpl implements AvoirFraiService {
 	@Autowired
 	OrdreConcernePaysRepository concerne;
 	
+	@Autowired
+	SupportRepository support;
 	@Override
 	public List<AvoirFrai> getAllRecords() {
 		List<AvoirFrai> res = new ArrayList<AvoirFrai>();
@@ -118,6 +121,11 @@ public class AvoirFraisServiceImpl implements AvoirFraiService {
 	@Override
 	public AvoirFrai getFraisMissionOfConcerne(Concerne c) {
 		return frais.getFraisMissionOfConcerne(c,c.getIdconcerne());
+	}
+
+	@Override
+	public Support getSuppByCode(String code) {
+		return support.getSuppByCode(code);
 	}
 
 

@@ -1,6 +1,7 @@
 package com.rached.services;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -23,4 +24,10 @@ public interface OrdreMissRepository extends CrudRepository<OrdreMission, Serial
 	
 	@Query("select o from OrdreMission o where o.numOrdre=?1")
 	OrdreMission getOrdreMissionByNum(long numOrd);
+	
+	
+	@Query("select DISTINCT(om) from OrdreMission om,Mission m, Pays p,Concerne c"
+			+ " WHERE om.mission=m AND c.ordre = om AND c.pays.idpays=?1 AND m.dateDepartP BETWEEN ?2 AND ?3 AND"
+			+ " m.dateArriveP BETWEEN ?2 AND ?3  AND m.departement.codeDep = ?4")
+	List<OrdreMission> getAllMissionsBTDAC(long idpays,Date deb,Date fin,String codeDep);
 }

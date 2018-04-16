@@ -43,7 +43,10 @@ public class Projet implements Serializable {
 	@JsonIgnore
 	private List<AvoirBudgProg> avoirBudgProg = new ArrayList<AvoirBudgProg>();
     
-
+	//bi-directional many-to-one association to AvoirFrai
+		@OneToMany(mappedBy="projet",cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+		@JsonIgnore
+		private List<AvoirFrai> frais = new ArrayList<AvoirFrai>();
 	public Projet() {
 	}
 
@@ -97,7 +100,17 @@ public class Projet implements Serializable {
 		this.libProjFr = libProjFr;
 	}
 
-	
+	public AvoirFrai addAvoirFrai(AvoirFrai budg) {
+		getFrais().add(budg);
+		budg.setProjet(this);
+		return budg;
+	}
+
+	public AvoirFrai removeAvoirFrai(AvoirFrai budg) {
+		getFrais().remove(budg);
+		budg.setProjet(null);
+		return budg;
+	}
 
 	public AvoirBudgProg addAvoirBudgetProjet(AvoirBudgProg budg) {
 		getAvoirBudgProg().add(budg);
@@ -111,6 +124,14 @@ public class Projet implements Serializable {
 		return budg;
 	}
 	
+	public List<AvoirFrai> getFrais() {
+		return frais;
+	}
+
+	public void setFrais(List<AvoirFrai> frais) {
+		this.frais = frais;
+	}
+
 	@Override
 	public String toString() {
 		return "Projet [idprojet=" + idprojet + ", departement=" + departement + ", codeProjet=" + codeProjet

@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rached.model.AvoirFrai;
 import com.rached.model.Concerne;
+import com.rached.model.Projet;
 import com.rached.services.AvoirFraisServiceImpl;
 import com.rached.services.OrdreConcernePayServiceImpl;
 import com.rached.services.OrdreMissionServiceImpl;
+import com.rached.services.ProjetServicesImpl;
 import com.rached.services.TypeFraisServicesImpl;
 
 @RestController
@@ -37,7 +39,9 @@ public class AvoirFraisController {
 	@Qualifier("ordreConcernePayServiceImpl")
 	private OrdreConcernePayServiceImpl concerne;
 	
-	
+	@Autowired
+	@Qualifier("projetServicesImpl")
+	private ProjetServicesImpl projets;
 	
 	@RequestMapping(value="/allFraisoford/{idordre}",method= RequestMethod.GET )
 	public List<AvoirFrai>getAllFraisOfORDRE(@PathVariable("idordre")long idOrdre){
@@ -63,13 +67,21 @@ public class AvoirFraisController {
 	}
 	@RequestMapping(value = "/insertAvoirFrai", method = RequestMethod.POST )
 	public AvoirFrai insertAvoirFrai(@RequestBody AvoirFrai elem) {
-		
+		if((elem.getProjet().getIdprojet() > 0 ) && elem.getProjet() !=null) {
+		elem.setProjet(projets.getRecordById(elem.getProjet().getIdprojet()));
+		}else elem.setProjet(null);
+		elem.setSupport(frais.getSuppByCode(elem.getSupport().getCodeSupport()));
+		System.out.println(elem.getSupport());
 		elem.setOrdreMission(ordremiss.getRecordById(elem.getOrdreMission().getIdOrdre()));
 		elem.setTypeFrai(typefrais.getRecordBycode(elem.getTypeFrai().getCodeTypefr()));
 		return frais.insertRecord(elem);
 	}
 	@RequestMapping(value = "/updateAvoirFrai", method = RequestMethod.POST)
 	public AvoirFrai updateClasse(@RequestBody AvoirFrai elem) {
+		if((elem.getProjet().getIdprojet() > 0 )) {
+		elem.setProjet(projets.getRecordById(elem.getProjet().getIdprojet()));
+		}else elem.setProjet(null);
+		elem.setSupport(frais.getSuppByCode(elem.getSupport().getCodeSupport()));
 		elem.setTypeFrai(typefrais.getRecordBycode(elem.getTypeFrai().getCodeTypefr()));
 		 return frais.updateRecord(elem);
 	}
