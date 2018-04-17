@@ -27,7 +27,10 @@ public class OrdreMissionsController {
 	@Qualifier("missionaireServicesImpl")
 	private MissionaireServices implmissionaire;
 	
-	
+	@RequestMapping(value="/getOrdresvalides/{codeDep}",method= RequestMethod.GET )
+	public List<OrdreMission> getOrdresAcetatV(@PathVariable("codeDep") String codeDep){
+		return implordre.getOrdresetatV(codeDep);
+	}
 	@RequestMapping(value="/latestOrdMiss/{idMiss}",method= RequestMethod.GET )
 	public Long getLetestOrdreMissionsIndex(@PathVariable("idMiss") long idMiss){
 		return implordre.getLatestNumOrdre(idMiss);

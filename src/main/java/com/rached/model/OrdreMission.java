@@ -61,7 +61,7 @@ public class OrdreMission implements Serializable {
 	@OneToMany(mappedBy="ordreMission",cascade = {CascadeType.ALL})
 	@JsonIgnore
 	private List<AvoirFrai> frais = new ArrayList<AvoirFrai>();
-	
+	@Column(name="TIMBRE")
 	private long timbre;
 
 	public OrdreMission() {

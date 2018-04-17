@@ -89,6 +89,11 @@ public class OrdreMissionServiceImpl implements OrdreMissService {
 		return ordremissions.getAllMissionsBTDAC(idpays, deb, fin, codeDep);
 	}
 
+	@Override
+	public List<OrdreMission> getOrdresetatV(String codeDep) {
+		return ordremissions.getOrdresetatV("^"+codeDep);
+	}
+
 	
 	
 }

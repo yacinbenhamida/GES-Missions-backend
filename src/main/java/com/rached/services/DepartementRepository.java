@@ -13,7 +13,6 @@ import com.rached.model.TypeDep;
 public interface DepartementRepository extends CrudRepository<Departement, Serializable>{
 	@Query("select d from Departement d where d.typedep = ?1")
 	List<Departement> getAllDepsOfType(TypeDep type);
-	//@Query("select d from Departement d where d.codeDep LIKE %?1% AND d.typedep.idtypedep != 5")
 	@Query(value = "SELECT * FROM DEPARTEMENT where REGEXP_LIKE(CODE_DEP, :codem) AND ID_TYPE_DEP != 5",nativeQuery=true)
 	Iterable<Departement> getAllDepsOfMinistere(@Param("codem")String codem);
 	
