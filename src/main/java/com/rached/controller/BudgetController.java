@@ -308,6 +308,13 @@ public class BudgetController {
 		 maj.setEtat("O");
 		 impldep.updateMajBudgDep(maj);
 	}
-	
-	
+
+	@RequestMapping(value="/getSommeBudgetsMission/{codeDep}/{year}",method = RequestMethod.GET)
+	public double sommebudgMission(@PathVariable("codeDep")String codeDep,@PathVariable("year")int year){
+		 return impldep.getSumBudgObtenusMissions(codeDep, year);
+	}
+	@RequestMapping(value="/getSommeBudgetsTransport/{codeDep}/{year}",method = RequestMethod.GET)
+	public double sommebudgTransport(@PathVariable("codeDep")String codeDep,@PathVariable("year")int year){
+		 return impldep.getSumBudgObtenusTransport(codeDep, year);
+	}
 }

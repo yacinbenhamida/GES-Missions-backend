@@ -20,4 +20,6 @@ public interface AvoirFraiService extends Services<AvoirFrai> {
 	List<AvoirFrai> getAllFraisDiversOfOrdre(long idordre);
 	AvoirFrai getFraisMissionOfConcerne(Concerne c);
 	Support getSuppByCode(String code);
+	double getTotalFraisMissionPromis(String codeDep,int year);
+	double getTotalFraisTransportPromis(String codeDep,int year);
 }

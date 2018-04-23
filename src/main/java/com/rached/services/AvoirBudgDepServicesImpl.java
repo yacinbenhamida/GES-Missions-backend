@@ -124,4 +124,13 @@ public class AvoirBudgDepServicesImpl implements AvoirBudgDepServices {
 	public MajBudgDep getMajOfBudgDep(long idbudg) {
 		return repomaj.getMajBudgDepByIdBudget(idbudg);
 	}
+
+	@Override
+	public double getSumBudgObtenusMissions(String codeDep, int year) {
+		return repomaj.getTotalBudgetsObtenusMission(codeDep, year);
+	}
+	@Override
+	public double getSumBudgObtenusTransport(String codeDep, int year) {
+		return repomaj.getTotalBudgetsObtenusTransport(codeDep, year);
+	}
 }

@@ -94,6 +94,11 @@ public class OrdreMissionServiceImpl implements OrdreMissService {
 		return ordremissions.getOrdresetatV("^"+codeDep);
 	}
 
+	@Override
+	public List<OrdreMission> getAllMissBTDA(Date deb, Date fin, String codeDep) {
+		return ordremissions.getAllMissionsBTDA(deb, fin, codeDep);
+	}
+
 	
 	
 }

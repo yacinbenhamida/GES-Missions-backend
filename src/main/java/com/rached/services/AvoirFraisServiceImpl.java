@@ -128,7 +128,15 @@ public class AvoirFraisServiceImpl implements AvoirFraiService {
 		return support.getSuppByCode(code);
 	}
 
+	@Override
+	public double getTotalFraisMissionPromis(String codeDep, int year) {
+		return frais.getTotalFraisMissionPromis(codeDep, year);
+	}
 
+	@Override
+	public double getTotalFraisTransportPromis(String codeDep, int year) {
+		return frais.getTotalFraisTransportPromis(codeDep, year);
+	}
 
 
 

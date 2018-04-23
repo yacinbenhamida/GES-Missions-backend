@@ -21,7 +21,7 @@ public interface OrdreMissRepository extends CrudRepository<OrdreMission, Serial
 	@Query("select MAX(o.numOrdre) from OrdreMission o where o.mission.numMission = ?1")
 	Long getLatestNumOrdre(long nummiss);
 	
-	@Query("select o from OrdreMission o where o.mission.numMission = ?2 AND o.numOrdre=?1")
+	@Query("select o from OrdreMission o where o.mission.numMission = ?2 AND o.idOrdre=?1")
 	OrdreMission getOrdreMissionOf(long numord,long numMiss) ;
 	
 	@Query("select o from OrdreMission o where o.numOrdre=?1")
@@ -39,6 +39,12 @@ public interface OrdreMissRepository extends CrudRepository<OrdreMission, Serial
 	
 	@Query("select DISTINCT(om) from OrdreMission om,Mission m, Pays p,Concerne c"
 			+ " WHERE om.mission=m AND c.ordre = om AND c.pays.idpays=?1 AND m.dateDepartP BETWEEN ?2 AND ?3 AND"
-			+ " m.dateArriveP BETWEEN ?2 AND ?3  AND m.departement.codeDep = ?4")
+			+ " m.dateArriveP BETWEEN ?2 AND ?3  AND m.departement.codeDep = ?4  AND om.etat!='E'")
 	List<OrdreMission> getAllMissionsBTDAC(long idpays,Date deb,Date fin,String codeDep);
+	
+
+	@Query("select DISTINCT(om) from OrdreMission om,Mission m, Pays p,Concerne c"
+			+ " WHERE om.mission=m AND c.ordre = om  AND m.dateDepartP BETWEEN ?1 AND ?2 AND"
+			+ " m.dateArriveP BETWEEN ?1 AND ?2  AND m.departement.codeDep = ?3 AND om.etat!='E'")
+	List<OrdreMission> getAllMissionsBTDA(Date deb,Date fin,String codeDep);
 }

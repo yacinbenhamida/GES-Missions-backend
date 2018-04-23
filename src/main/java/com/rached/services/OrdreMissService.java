@@ -14,5 +14,6 @@ public interface OrdreMissService extends Services<OrdreMission> {
 	OrdreMission getOrdMOfMission(long numOrdre,long numMISS);
 	OrdreMission getOrdByNum(long numOrd);
 	List<OrdreMission> getAllMissBTDAC(long idpays,Date deb,Date fin,String codeDep);
+	List<OrdreMission> getAllMissBTDA(Date deb,Date fin,String codeDep);
 	List<OrdreMission> getOrdresetatV(String codeDep);
 }

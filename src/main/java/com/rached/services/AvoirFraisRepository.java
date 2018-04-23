@@ -22,4 +22,16 @@ public interface AvoirFraisRepository extends CrudRepository<AvoirFrai, Serializ
 	@Query("select a from AvoirFrai a,OrdreMission o,Concerne c,Pays p where c = :conc AND c.idconcerne = :idc AND o=c.ordre"
 			+ " AND a.ordreMission = o AND a.ordreMission = c.ordre AND a.typeFrai.codeTypefr='0808' AND c.pays = p")
 	AvoirFrai getFraisMissionOfConcerne(@Param("conc")Concerne c,@Param("idc")long idc);
+	
+	@Query("SELECT NVL(SUM(a.valeurPrevue),0) FROM AvoirFrai a,OrdreMission o WHERE a.ordreMission.mission.departement.codeDep=?1 AND "
+			+ " SUBSTR(to_char(a.ordreMission.dateDepP,'dd/mm/yyyy'),7,5)=to_char(?2) "
+			+ " AND SUBSTR(to_char(a.ordreMission.dateArrP,'dd/mm/yyyy'),7,5)=to_char(?2)"
+			+ " AND a.typeFrai.codeTypefr = '0808' AND o.etat='S' AND a.ordreMission = o")
+	double getTotalFraisMissionPromis(String codeDep,int year);
+	
+	@Query("SELECT NVL(SUM(a.valeurPrevue),0) FROM AvoirFrai a,OrdreMission o WHERE a.ordreMission.mission.departement.codeDep=?1 AND "
+			+ " SUBSTR(to_char(a.ordreMission.dateDepP,'dd/mm/yyyy'),7,5)=to_char(?2) "
+			+ " AND SUBSTR(to_char(a.ordreMission.dateArrP,'dd/mm/yyyy'),7,5)=to_char(?2)"
+			+ " AND a.typeFrai.codeTypefr = '0606' AND o.etat='S' AND a.ordreMission = o")
+	double getTotalFraisTransportPromis(String codeDep,int year);
 }

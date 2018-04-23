@@ -22,4 +22,9 @@ public interface AvoirBudgDepServices extends Services<AvoirBudgDep> {
 	void cancelMajBdep(MajBudgDep maj);
 	List<MajBudgDep> getAllMajsOfDepOnBudgdep(Departement d);
 	MajBudgDep getMajOfBudgDep(long idbudg);
+	// somme des budgets de mission
+	double getSumBudgObtenusMissions(String codeDep,int year);
+	// somme des budgets de transport
+	double getSumBudgObtenusTransport(String codeDep,int year);
+	
 }

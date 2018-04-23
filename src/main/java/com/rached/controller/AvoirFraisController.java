@@ -89,4 +89,13 @@ public class AvoirFraisController {
 	public void deleteClasse(@PathVariable("code") Long code) {
 		frais.deleteRecord(Long.valueOf(code));
 	}
+	@RequestMapping(value = "/getTotFraisMissionPromis/{codeDep}/{year}", method = RequestMethod.GET)
+	public double getTotFraisMissionPromis(@PathVariable("codeDep") String codeDep,@PathVariable("year") int year) {
+		return frais.getTotalFraisMissionPromis(codeDep, year);
+	}
+	
+	@RequestMapping(value = "/getTotFraisTransportPromis/{codeDep}/{year}", method = RequestMethod.GET)
+	public double getTotFraisTransportPromis(@PathVariable("codeDep") String codeDep,@PathVariable("year") int year) {
+		return frais.getTotalFraisMissionPromis(codeDep, year);
+	}
 }

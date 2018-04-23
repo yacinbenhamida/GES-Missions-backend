@@ -29,4 +29,17 @@ public interface MajBudgDepartementRepository extends CrudRepository<MajBudgDep,
 	
 	@Query("select m from MajBudgDep m where m.budget.idBudgDep = ?1")
 	MajBudgDep getMajBudgDepByIdBudget(long codeBudj);
+	@Query(nativeQuery=true,
+	value="select NVL(SUM(m.VALEUR_BUDG_MISSION),0) from MAJ_BUDG_DEP m,AVOIR_BUDG_DEP d"
+			+ "  where  d.CODE_DEP = ?1 AND m.ID_BUDG_DEP=d.ID_BUDG_DEP"
+			+ " AND SUBSTR(to_char(m.DATE_MAJ,'dd/mm/yyyy'),7,5)=to_char(?2) AND d.ANNEE_ATTR = ?2"
+			+ " AND m.ETAT='S'")
+	long getTotalBudgetsObtenusMission(String codeDep,int year);
+
+	@Query(nativeQuery=true,
+	value="select NVL(SUM(m.VALEUR_BUDG_TRANSPORT),0) from MAJ_BUDG_DEP m,AVOIR_BUDG_DEP d"
+			+ "  where  d.CODE_DEP = ?1 AND m.ID_BUDG_DEP=d.ID_BUDG_DEP"
+			+ " AND SUBSTR(to_char(m.DATE_MAJ,'dd/mm/yyyy'),7,5)=to_char(?2) AND d.ANNEE_ATTR = ?2"
+			+ " AND m.ETAT='S'")
+	double getTotalBudgetsObtenusTransport(String codeDep,int year);
 }
