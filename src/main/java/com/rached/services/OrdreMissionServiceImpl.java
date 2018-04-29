@@ -67,8 +67,8 @@ public class OrdreMissionServiceImpl implements OrdreMissService {
 	}
 
 	@Override
-	public List<OrdreMission> getAllOrdresOfMission(long codeMiss) {
-		return ordremissions.getAllOrdresOfMission(codeMiss);	}
+	public List<OrdreMission> getAllOrdresOfMission(long codeMiss,String codeDep) {
+		return ordremissions.getAllOrdresOfMission(codeMiss,codeDep);	}
 
 	@Override
 	public Long getLatestNumOrdre(long nummiss) {

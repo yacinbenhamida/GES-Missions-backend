@@ -16,8 +16,8 @@ public interface MissionRepository extends CrudRepository<Mission, Serializable>
 	List<Mission>getAllMissionsOfDepartement(String codeDep);
 	@Query("select MAX(m.numMission) from Mission m where m.departement.codeDep = ?1")
 	Long getLatestCodeMissionOfDep(String codeDep);
-	@Query("select m from Mission m where m.numMission = ?1")
-	Mission getMissionByNum(long numMiss);
+	@Query("select m from Mission m where m.numMission = ?1 AND m.departement.codeDep = ?2")
+	Mission getMissionByNum(long numMiss,String codeDep);
 	//B.I.
 
 }

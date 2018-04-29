@@ -88,7 +88,10 @@ public class UserController {
 		System.out.println("userstruct : "+elem);
 		return impl.updateUs(elem.getUtilisateur(), elem.getDepartement());
 	}
-	
+	@RequestMapping(value = "/updateUsers", method = RequestMethod.POST)
+	public Utilisateur updateUsers(@RequestBody Utilisateur u) {	
+		return impl.updateRecord(u);
+	}
 	@RequestMapping(value = "/deleteUser/{code}", method = RequestMethod.GET)
 	public void deleteUser(@PathVariable("code") int code) {
 		//Utilisateur u = impl.getRecordById(code);

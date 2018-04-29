@@ -15,8 +15,8 @@ public interface OrdreMissRepository extends CrudRepository<OrdreMission, Serial
 	@Query("select o from OrdreMission o,Mission m where o.mission = m AND m.departement.codeDep = ?1 AND o.etat='E' ")
 	List<OrdreMission> getAllOrdresOfDep(String codeDep);
 	
-	@Query("select o from OrdreMission o where o.mission.numMission = ?1")
-	List<OrdreMission> getAllOrdresOfMission(long codeMiss);
+	@Query("select o from OrdreMission o where o.mission.numMission = ?1 AND o.mission.departement.codeDep=?2")
+	List<OrdreMission> getAllOrdresOfMission(long codeMiss,String codeDep);
 	
 	@Query("select MAX(o.numOrdre) from OrdreMission o where o.mission.numMission = ?1")
 	Long getLatestNumOrdre(long nummiss);

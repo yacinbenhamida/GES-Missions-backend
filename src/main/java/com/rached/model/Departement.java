@@ -32,7 +32,7 @@ public class Departement implements Serializable {
 	@Column(name="LIB_DEP_FR")
 	private String libDepFr;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="ID_TYPE_DEP")
 	private TypeDep typedep;
 

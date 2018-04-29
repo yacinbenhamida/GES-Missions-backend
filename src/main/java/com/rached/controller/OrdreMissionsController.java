@@ -36,9 +36,9 @@ public class OrdreMissionsController {
 		return implordre.getLatestNumOrdre(idMiss);
 	}
 	
-	@RequestMapping(value="/allOrdresMissionsOfMiss/{idMiss}",method= RequestMethod.GET )
-	public List<OrdreMission>getAllOrdresMissionsOfMiss(@PathVariable("idMiss") long idMiss){
-		return implordre.getAllOrdresOfMission(idMiss);
+	@RequestMapping(value="/allOrdresMissionsOfMiss/{idMiss}/{codeDep}",method= RequestMethod.GET )
+	public List<OrdreMission>getAllOrdresMissionsOfMiss(@PathVariable("idMiss") long idMiss,@PathVariable("codeDep")String codeDep){
+		return implordre.getAllOrdresOfMission(idMiss,codeDep);
 	}
 	
 	@RequestMapping(value="/allOrdresMissionsOfDep/{codeDep}",method= RequestMethod.GET )
@@ -53,7 +53,7 @@ public class OrdreMissionsController {
 	public OrdreMission insertOrdMission(@RequestBody OrdreMission elem) {
 		System.out.println("ordre : "+ elem);
 		elem.setMissionaire(implmissionaire.getMissByCIN(elem.getMissionaire().getCin()));
-		elem.setMission(implmiss.getMissByNum(elem.getMission().getNumMission()));
+		elem.setMission(implmiss.getMissByNum(elem.getMission().getNumMission(),elem.getMission().getDepartement().getCodeDep()));
 		elem.setEtat("E");
 		return implordre.insertRecord(elem);
 	}
@@ -61,7 +61,7 @@ public class OrdreMissionsController {
 	
 	@RequestMapping(value = "/updateOrdMission", method = RequestMethod.POST)
 	public OrdreMission updateOrdMission(@RequestBody OrdreMission elem) {
-		elem.setMission(implmiss.getMissByNum(elem.getMission().getNumMission()));
+		elem.setMission(implmiss.getMissByNum(elem.getMission().getNumMission(),elem.getMission().getDepartement().getCodeDep()));
 		elem.setMissionaire(implmissionaire.getMissByCIN(elem.getMissionaire().getCin()));
 		 return implordre.updateRecord(elem);
 	}

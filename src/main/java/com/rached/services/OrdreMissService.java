@@ -9,7 +9,7 @@ import com.rached.model.OrdreMission;
 
 public interface OrdreMissService extends Services<OrdreMission> {
 	List<OrdreMission> getAllOrdresOfDep(String codeDep);
-	List<OrdreMission> getAllOrdresOfMission(long codeMiss);
+	List<OrdreMission> getAllOrdresOfMission(long codeMiss,String codeDep);
 	Long getLatestNumOrdre(long nummiss);
 	OrdreMission getOrdMOfMission(long numOrdre,long numMISS);
 	OrdreMission getOrdByNum(long numOrd);

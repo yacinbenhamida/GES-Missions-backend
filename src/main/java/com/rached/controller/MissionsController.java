@@ -44,9 +44,9 @@ public class MissionsController {
 		return implmiss.getLatestCodeMOfDepartement(codeDep);
 	}
 	// 
-	@RequestMapping(value = "/findMissionByNum/{code}", method = RequestMethod.GET)
-	public Mission getMissionByNum(@PathVariable("code") Long id) {
-		return implmiss.getMissByNum(Long.valueOf(id));
+	@RequestMapping(value = "/findMissionByNum/{code}/{codeDep}", method = RequestMethod.GET)
+	public Mission getMissionByNum(@PathVariable("code") Long id,@PathVariable("codeDep")String codeDep) {
+		return implmiss.getMissByNum(Long.valueOf(id),codeDep);
 	}
 	
 	@RequestMapping(value = "/findMission/{code}", method = RequestMethod.GET)

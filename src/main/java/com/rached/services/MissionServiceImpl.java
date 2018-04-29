@@ -70,8 +70,8 @@ public class MissionServiceImpl implements MissionServices {
 	}
 
 	@Override
-	public Mission getMissByNum(long numMiss) {
-		return missions.getMissionByNum(numMiss);
+	public Mission getMissByNum(long numMiss,String codeDep) {
+		return missions.getMissionByNum(numMiss,codeDep);
 	}
 
 
