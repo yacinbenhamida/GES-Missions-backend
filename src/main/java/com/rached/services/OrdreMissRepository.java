@@ -12,6 +12,13 @@ import com.rached.model.OrdreMission;
 
 
 public interface OrdreMissRepository extends CrudRepository<OrdreMission, Serializable> {
+	
+	@Query("select o from OrdreMission o,Mission m where o.mission = m"
+			+ " AND m.departement.codeDep = ?1 AND o.etat='E' AND "
+			+ " (SELECT COUNT(c) FROM Concerne c where c.ordre = o AND c.ordre.mission.departement.codeDep = ?1) > 0"
+			+ " AND (SELECT COUNT(a) From AvoirFrai a where a.ordreMission = o AND a.ordreMission.mission.departement.codeDep = ?1) > 0")
+	List<OrdreMission> getAllOrdresOfDepPourValidationOrdonnateur(String codeDep);
+	
 	@Query("select o from OrdreMission o,Mission m where o.mission = m AND m.departement.codeDep = ?1 AND o.etat='E' ")
 	List<OrdreMission> getAllOrdresOfDep(String codeDep);
 	
@@ -39,12 +46,15 @@ public interface OrdreMissRepository extends CrudRepository<OrdreMission, Serial
 	
 	@Query("select DISTINCT(om) from OrdreMission om,Mission m, Pays p,Concerne c"
 			+ " WHERE om.mission=m AND c.ordre = om AND c.pays.idpays=?1 AND m.dateDepartP BETWEEN ?2 AND ?3 AND"
-			+ " m.dateArriveP BETWEEN ?2 AND ?3  AND m.departement.codeDep = ?4  AND om.etat!='E'")
+			+ " m.dateArriveP BETWEEN ?2 AND ?3  AND m.departement.codeDep = ?4  AND om.etat='S'")
 	List<OrdreMission> getAllMissionsBTDAC(long idpays,Date deb,Date fin,String codeDep);
 	
 
 	@Query("select DISTINCT(om) from OrdreMission om,Mission m, Pays p,Concerne c"
 			+ " WHERE om.mission=m AND c.ordre = om  AND m.dateDepartP BETWEEN ?1 AND ?2 AND"
-			+ " m.dateArriveP BETWEEN ?1 AND ?2  AND m.departement.codeDep = ?3 AND om.etat!='E'")
+			+ " m.dateArriveP BETWEEN ?1 AND ?2  AND m.departement.codeDep = ?3 AND om.etat='S'")
 	List<OrdreMission> getAllMissionsBTDA(Date deb,Date fin,String codeDep);
+	
+	
+	
 }

@@ -67,8 +67,8 @@ public class OrdreConcernePayServiceImpl implements OrdreConcernePayService {
 	}
 
 	@Override
-	public List<Concerne> getAllConcerneoford(long idordre) {
-		return concerne.getAllConcerneoford(idordre);
+	public List<Concerne> getAllConcerneoford(long idordre,String codeDep) {
+		return concerne.getAllConcerneoford(idordre,codeDep);
 	}
 
 }

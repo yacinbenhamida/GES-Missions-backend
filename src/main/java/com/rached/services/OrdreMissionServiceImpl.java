@@ -99,6 +99,11 @@ public class OrdreMissionServiceImpl implements OrdreMissService {
 		return ordremissions.getAllMissionsBTDA(deb, fin, codeDep);
 	}
 
+	@Override
+	public List<OrdreMission> getAllOrdresOfDepPourValidationOrdonnateur(String codeDep) {
+		return ordremissions.getAllOrdresOfDepPourValidationOrdonnateur(codeDep);
+	}
+
 	
 	
 }

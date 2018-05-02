@@ -16,9 +16,9 @@ public interface AvoirFraiService extends Services<AvoirFrai> {
 	TypeFrai getTypeById(long idtype);
 	List<TypeFrai> getAllTypes();
 	AvoirFrai getAvFraisInsere(AvoirFrai av);
-	List<AvoirFrai> getAvFraisOfORD(long idord);
+	List<AvoirFrai> getAvFraisOfORD(long idord,String codeDep);
 	List<AvoirFrai> getAllFraisDiversOfOrdre(long idordre);
-	AvoirFrai getFraisMissionOfConcerne(Concerne c);
+	AvoirFrai getFraisMissionOfConcerne(Concerne c,String codeDep,long idOrdre);
 	Support getSuppByCode(String code);
 	double getTotalFraisMissionPromis(String codeDep,int year);
 	double getTotalFraisTransportPromis(String codeDep,int year);

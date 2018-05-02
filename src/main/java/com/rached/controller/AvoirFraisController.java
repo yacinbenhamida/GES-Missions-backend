@@ -43,19 +43,19 @@ public class AvoirFraisController {
 	@Qualifier("projetServicesImpl")
 	private ProjetServicesImpl projets;
 	
-	@RequestMapping(value="/allFraisoford/{idordre}",method= RequestMethod.GET )
-	public List<AvoirFrai>getAllFraisOfORDRE(@PathVariable("idordre")long idOrdre){
-		return frais.getAvFraisOfORD(idOrdre);
+	@RequestMapping(value="/allFraisoford/{idordre}/{codeDep}",method= RequestMethod.GET )
+	public List<AvoirFrai>getAllFraisOfORDRE(@PathVariable("idordre")long idOrdre,@PathVariable("codeDep")String codeDep){
+		return frais.getAvFraisOfORD(idOrdre,codeDep);
 	}
 	@RequestMapping(value="/allFraisDiversoford/{idordre}",method= RequestMethod.GET )
 	public List<AvoirFrai>getAllFraisDiversOfORDRE(@PathVariable("idordre")long idOrdre){
 		return frais.getAllFraisDiversOfOrdre(idOrdre);
 	}
 	
-	@RequestMapping(value="/allFraisMissionofConcerne/{idconcerne}",method= RequestMethod.GET )
-	public AvoirFrai getAllFraisMissOfCONCERNE(@PathVariable("idconcerne")long idc){
+	@RequestMapping(value="/allFraisMissionofConcerne/{idconcerne}/{codeDep}/{idordre}",method= RequestMethod.GET )
+	public AvoirFrai getAllFraisMissOfCONCERNE(@PathVariable("idconcerne")long idc,@PathVariable("codeDep")String codeDep,@PathVariable("idordre")long idOrdre){
 		Concerne c = concerne.getRecordById(idc);
-		return frais.getFraisMissionOfConcerne(c);
+		return frais.getFraisMissionOfConcerne(c,codeDep,idOrdre);
 	}
 	@RequestMapping(value="/allFrais",method= RequestMethod.GET )
 	public List<AvoirFrai>getAllFrais(){

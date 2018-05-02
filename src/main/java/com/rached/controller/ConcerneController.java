@@ -36,9 +36,9 @@ public class ConcerneController {
 		return impl.getAllRecords();
 	}
 	
-	@RequestMapping(value="/allConcernesOfOrdre/{id}",method= RequestMethod.GET )
-	public List<Concerne>getAllConcerneOfOrdre(@PathVariable("id") Long id){
-		return impl.getAllConcerneoford(id);
+	@RequestMapping(value="/allConcernesOfOrdre/{id}/{codeDep}",method= RequestMethod.GET )
+	public List<Concerne>getAllConcerneOfOrdre(@PathVariable("id") Long id,@PathVariable("codeDep")String codeDep){
+		return impl.getAllConcerneoford(id,codeDep);
 	}
 	
 	@RequestMapping(value = "/findConcerne/{code}", method = RequestMethod.GET)

@@ -109,8 +109,8 @@ public class AvoirFraisServiceImpl implements AvoirFraiService {
 	}
 
 	@Override
-	public List<AvoirFrai> getAvFraisOfORD(long idord) {
-		return frais.getAllFraisOfOrdre(idord);
+	public List<AvoirFrai> getAvFraisOfORD(long idord,String codeDep) {
+		return frais.getAllFraisOfOrdre(idord,codeDep);
 	}
 
 	@Override
@@ -119,8 +119,8 @@ public class AvoirFraisServiceImpl implements AvoirFraiService {
 	}
 
 	@Override
-	public AvoirFrai getFraisMissionOfConcerne(Concerne c) {
-		return frais.getFraisMissionOfConcerne(c,c.getIdconcerne());
+	public AvoirFrai getFraisMissionOfConcerne(Concerne c,String codeDep,long idOrdre) {
+		return frais.getFraisMissionOfConcerne(c,c.getIdconcerne(),codeDep,idOrdre);
 	}
 
 	@Override

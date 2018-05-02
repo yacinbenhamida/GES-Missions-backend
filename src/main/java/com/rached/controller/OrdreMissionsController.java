@@ -40,6 +40,12 @@ public class OrdreMissionsController {
 	public List<OrdreMission>getAllOrdresMissionsOfMiss(@PathVariable("idMiss") long idMiss,@PathVariable("codeDep")String codeDep){
 		return implordre.getAllOrdresOfMission(idMiss,codeDep);
 	}
+	// affichage des ordre éligibles a une confirmation par l'ordonnateur de l'organisme 
+	// ayant au moins un frais
+	@RequestMapping(value="/allOrdresMissionsOfDepAyantFrais/{codeDep}",method= RequestMethod.GET )
+	public List<OrdreMission>getAllOrdresMissionsAyantFrais(@PathVariable("codeDep") String codeDep){
+		return implordre.getAllOrdresOfDepPourValidationOrdonnateur(codeDep);
+	}
 	
 	@RequestMapping(value="/allOrdresMissionsOfDep/{codeDep}",method= RequestMethod.GET )
 	public List<OrdreMission>getAllOrdresMissions(@PathVariable("codeDep") String codeDep){

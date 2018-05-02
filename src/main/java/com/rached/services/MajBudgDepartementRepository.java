@@ -11,17 +11,21 @@ import com.rached.model.MajBudgDep;
 import com.rached.model.Utilisateur;
 
 public interface MajBudgDepartementRepository extends CrudRepository<MajBudgDep, Serializable> {
-	@Query("select m from MajBudgDep m,AvoirBudgDep a where a.departement.codeDep = ?1 AND m.etat='O' AND m.budget = a")
+	// maj budg dep of current year
+	@Query("select m from MajBudgDep m,AvoirBudgDep a where a.departement.codeDep = ?1"
+			+ " AND m.etat='O' AND m.budget = a AND  SUBSTR(to_char(SYSDATE,'dd/mm/yyyy'),7,5) = to_char(a.anneeAttr)")
 	List<MajBudgDep> getAllMajBudgetsOfdep(String codeDep);
 	
 	@Query("select m from MajBudgDep m,AvoirBudgDep a,UserStruct u,Departement d "
-			+ "where a.departement=?2  AND u.utilisateur = ?1 AND u.departement = d AND a.departement = d  AND m.etat != 'R'")
+			+ "where a.departement=?2  AND u.utilisateur = ?1 AND u.departement = d"
+			+ " AND a.departement = d  AND m.etat != 'R'  AND  SUBSTR(to_char(SYSDATE,'dd/mm/yyyy'),7,5) = to_char(a.anneeAttr)")
 	List<MajBudgDep> getAllMajBudgDonebyUser(Utilisateur user,Departement dep);
 	
 	@Query("select m from MajBudgDep m where m.idMajBdugDep = ?1")
 	MajBudgDep getMajById(Long id);
 	
-	@Query("select m from MajBudgDep m,AvoirBudgDep a where  m.budget = a AND a.departement = ?1  AND m.etat != 'R'")
+	@Query("select m from MajBudgDep m,AvoirBudgDep a where  m.budget = a "
+			+ " AND a.departement = ?1  AND m.etat != 'R' AND  SUBSTR(to_char(SYSDATE,'dd/mm/yyyy'),7,5) = to_char(a.anneeAttr)")
 	List<MajBudgDep> getAllMajBudgProgOfDepartement(Departement dep);
 	
 	@Query("select m from MajBudgDep m where m.budget.idBudgDep = ?1")
