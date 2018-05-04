@@ -27,6 +27,7 @@ import org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView;
 import com.lowagie.text.pdf.codec.Base64.OutputStream;
 import com.rached.model.Mission;
 import com.rached.model.OrdreMission;
+import com.rached.services.AvoirBudgDepServices;
 import com.rached.services.MissionServices;
 import com.rached.services.OrdreMissService;
 
@@ -64,6 +65,10 @@ public class ReportingController {
 	@Autowired
 	ApplicationContext applicationContext;
 	
+	@Autowired
+	@Qualifier("avoirBudgDepServicesImpl")
+	AvoirBudgDepServices budgdep;
+	
 	// get all missions of given country between 2 dates 
 	@RequestMapping(value="/getMissionsBTDAC/{idpays}/{deb}/{fin}/{codeDep}",method= RequestMethod.GET )
 	public List<OrdreMission>getMissionsBTDAC(@PathVariable("idpays")long idpays,
@@ -76,6 +81,12 @@ public class ReportingController {
 		public List<OrdreMission>getMissionsBTDA(@PathVariable("deb")Date debut,@PathVariable("fin")Date fin,@PathVariable("codeDep")String codeDep){
 			return missions.getAllMissBTDA(debut, fin,codeDep);
 		}
+		
+		@RequestMapping(value="/getAllyears/{codeDep}",method = RequestMethod.GET)
+		public List<Integer>getYears(@PathVariable("codeDep")String codeDep){
+			return budgdep.getYears(codeDep);
+		}
+		
 	/*
 	@RequestMapping(value="/report",method= RequestMethod.GET )
 	public JRPdfExporter rep() {

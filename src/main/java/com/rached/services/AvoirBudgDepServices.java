@@ -26,5 +26,6 @@ public interface AvoirBudgDepServices extends Services<AvoirBudgDep> {
 	double getSumBudgObtenusMissions(String codeDep,int year);
 	// somme des budgets de transport
 	double getSumBudgObtenusTransport(String codeDep,int year);
-	
+	// les années administratives
+	List<Integer> getYears(String codeDep);
 }

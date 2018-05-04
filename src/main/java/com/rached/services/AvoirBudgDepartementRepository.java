@@ -14,6 +14,7 @@ public interface AvoirBudgDepartementRepository extends CrudRepository<AvoirBudg
 	AvoirBudgDep getBudgDepByRef(String refbmiss,String refbtransp);
 	@Query("select a FROM AvoirBudgDep a,MajBudgDep m where a.departement = ?1 AND a.anneeAttr = ?2 AND m.budget = a AND m.etat='S'")
 	AvoirBudgDep getBudgOfDep(Departement dep,int année);
-	
+	@Query("select a.anneeAttr FROM AvoirBudgDep a where a.departement.codeDep = ?1")
+	List<Integer> getYears(String codeDep);
 
 }

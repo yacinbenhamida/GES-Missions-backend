@@ -133,4 +133,9 @@ public class AvoirBudgDepServicesImpl implements AvoirBudgDepServices {
 	public double getSumBudgObtenusTransport(String codeDep, int year) {
 		return repomaj.getTotalBudgetsObtenusTransport(codeDep, year);
 	}
+
+	@Override
+	public List<Integer> getYears(String codeDep) {
+		return repo.getYears(codeDep);
+	}
 }
