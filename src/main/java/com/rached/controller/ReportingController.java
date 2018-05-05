@@ -29,8 +29,9 @@ import com.rached.model.Mission;
 import com.rached.model.OrdreMission;
 import com.rached.services.AvoirBudgDepServices;
 import com.rached.services.MissionServices;
+import com.rached.services.OrdreConcernePayService;
 import com.rached.services.OrdreMissService;
-
+import com.rached.services.OrdreConcernePaysRepository.Results;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -68,7 +69,9 @@ public class ReportingController {
 	@Autowired
 	@Qualifier("avoirBudgDepServicesImpl")
 	AvoirBudgDepServices budgdep;
-	
+	@Autowired
+	@Qualifier("ordreConcernePayServiceImpl")
+	OrdreConcernePayService concerne;
 	// get all missions of given country between 2 dates 
 	@RequestMapping(value="/getMissionsBTDAC/{idpays}/{deb}/{fin}/{codeDep}",method= RequestMethod.GET )
 	public List<OrdreMission>getMissionsBTDAC(@PathVariable("idpays")long idpays,
@@ -85,6 +88,11 @@ public class ReportingController {
 		@RequestMapping(value="/getAllyears/{codeDep}",method = RequestMethod.GET)
 		public List<Integer>getYears(@PathVariable("codeDep")String codeDep){
 			return budgdep.getYears(codeDep);
+		}
+		
+		@RequestMapping(value="/getPaysStats/{codeDep}/{year}",method = RequestMethod.GET)
+		public List<Results>getPaysStats(@PathVariable("codeDep")String codeDep,@PathVariable("year")int year){
+			return concerne.getPaysStats(codeDep,year);
 		}
 		
 	/*

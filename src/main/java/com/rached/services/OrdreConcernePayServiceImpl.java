@@ -1,8 +1,10 @@
 package com.rached.services;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,6 +15,7 @@ import com.rached.model.AvoirFrai;
  * joint class between ordre & pays : CONCERNE
  */
 import com.rached.model.Concerne;
+import com.rached.services.OrdreConcernePaysRepository.Results;
 @Service
 @Qualifier("ordreConcernePayServiceImpl")
 public class OrdreConcernePayServiceImpl implements OrdreConcernePayService {
@@ -69,6 +72,11 @@ public class OrdreConcernePayServiceImpl implements OrdreConcernePayService {
 	@Override
 	public List<Concerne> getAllConcerneoford(long idordre,String codeDep) {
 		return concerne.getAllConcerneoford(idordre,codeDep);
+	}
+
+	@Override
+	public List<Results> getPaysStats(String codeDep,int year) {
+		return concerne.getPaysStats(codeDep,year);
 	}
 
 }
