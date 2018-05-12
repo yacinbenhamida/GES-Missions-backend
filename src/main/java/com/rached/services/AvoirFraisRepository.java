@@ -27,12 +27,20 @@ public interface AvoirFraisRepository extends CrudRepository<AvoirFrai, Serializ
 	@Query("SELECT NVL(SUM(a.valeurPrevue),0) FROM AvoirFrai a,OrdreMission o WHERE a.ordreMission.mission.departement.codeDep=?1 AND "
 			+ " SUBSTR(to_char(a.ordreMission.dateDepP,'dd/mm/yyyy'),7,5)=to_char(?2) "
 			+ " AND SUBSTR(to_char(a.ordreMission.dateArrP,'dd/mm/yyyy'),7,5)=to_char(?2)"
-			+ " AND a.typeFrai.codeTypefr = '0808' AND o.etat='S' AND a.ordreMission = o")
-	double getTotalFraisMissionPromis(String codeDep,int year);
+			+ " AND a.typeFrai.codeTypefr = '0808' AND o.etat='S' AND a.ordreMission = o AND (a.support.codeSupport = 'I' OR a.support.codeSupport = 'J')")
+	double getTotalFraisMissionPromis(String codeDep,int year); // organisme
 	
 	@Query("SELECT NVL(SUM(a.valeurPrevue),0) FROM AvoirFrai a,OrdreMission o WHERE a.ordreMission.mission.departement.codeDep=?1 AND "
 			+ " SUBSTR(to_char(a.ordreMission.dateDepP,'dd/mm/yyyy'),7,5)=to_char(?2) "
 			+ " AND SUBSTR(to_char(a.ordreMission.dateArrP,'dd/mm/yyyy'),7,5)=to_char(?2)"
-			+ " AND a.typeFrai.codeTypefr = '0606' AND o.etat='S' AND a.ordreMission = o")
-	double getTotalFraisTransportPromis(String codeDep,int year);
+			+ " AND a.typeFrai.codeTypefr = '0606' AND o.etat='S' AND a.ordreMission = o AND (a.support.codeSupport = 'I' OR a.support.codeSupport = 'J')")
+	double getTotalFraisTransportPromis(String codeDep,int year); // organisme 
+	
+	
+	@Query("SELECT NVL(SUM(a.valeurPrevue),0) FROM AvoirFrai a,OrdreMission o WHERE a.ordreMission.mission.departement.codeDep=?1  "
+			+ " AND a.projet.idprojet = ?3"
+			+ " AND SUBSTR(to_char(a.ordreMission.dateDepP,'dd/mm/yyyy'),7,5)=to_char(?2) "
+			+ " AND SUBSTR(to_char(a.ordreMission.dateArrP,'dd/mm/yyyy'),7,5)=to_char(?2)"
+			+ " AND o.etat='S' AND a.ordreMission = o AND (a.support.codeSupport = 'A' OR a.support.codeSupport = 'M')")
+	double getToalFraisPECProjetPromis(String codeDep,int year,long idprojet); //projet
 }

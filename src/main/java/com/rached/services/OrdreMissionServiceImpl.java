@@ -104,6 +104,11 @@ public class OrdreMissionServiceImpl implements OrdreMissService {
 		return ordremissions.getAllOrdresOfDepPourValidationOrdonnateur(codeDep);
 	}
 
+	@Override
+	public List<OrdreMission> getAllOrdresOfDepPourValidationPayeur(String codeDep) {
+		return ordremissions.getAllOrdresOfDepPourValidationPayeur(codeDep);
+	}
+
 	
 	
 }

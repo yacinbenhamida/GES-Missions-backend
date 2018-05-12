@@ -98,4 +98,8 @@ public class AvoirFraisController {
 	public double getTotFraisTransportPromis(@PathVariable("codeDep") String codeDep,@PathVariable("year") int year) {
 		return frais.getTotalFraisMissionPromis(codeDep, year);
 	}
+	@RequestMapping(value = "/getToalFraisPECProjetPromis/{codeDep}/{year}/{proj}", method = RequestMethod.GET)
+	public double  getToalFraisPECProjetPromis(@PathVariable("codeDep") String codeDep,@PathVariable("year") int year,@PathVariable("proj") long idProjet) {
+		return frais.getToalFraisPECProjetPromis(codeDep, year,idProjet);
+	}
 }

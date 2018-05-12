@@ -22,4 +22,5 @@ public interface AvoirFraiService extends Services<AvoirFrai> {
 	Support getSuppByCode(String code);
 	double getTotalFraisMissionPromis(String codeDep,int year);
 	double getTotalFraisTransportPromis(String codeDep,int year);
+	double getToalFraisPECProjetPromis(String codeDep,int year,long idProjet);
 }

@@ -13,6 +13,9 @@ import com.rached.model.OrdreMission;
 
 public interface OrdreMissRepository extends CrudRepository<OrdreMission, Serializable> {
 	
+	@Query("select o from OrdreMission o WHERE o.mission.departement.codeDep =?1 AND o.etat='S' AND o.avance > 0")
+	List<OrdreMission> getAllOrdresOfDepPourValidationPayeur(String codeDep);
+	
 	@Query("select o from OrdreMission o,Mission m where o.mission = m"
 			+ " AND m.departement.codeDep = ?1 AND o.etat='E' AND "
 			+ " (SELECT COUNT(c) FROM Concerne c where c.ordre = o AND c.ordre.mission.departement.codeDep = ?1) > 0"

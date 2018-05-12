@@ -27,6 +27,11 @@ public class OrdreMissionsController {
 	@Qualifier("missionaireServicesImpl")
 	private MissionaireServices implmissionaire;
 	
+	@RequestMapping(value="/ordrepourpayeur/{codeDep}",method= RequestMethod.GET )
+	public List<OrdreMission> getOrdrePourPayeur(@PathVariable("codeDep") String codeDep){
+		return implordre.getAllOrdresOfDepPourValidationPayeur(codeDep);
+	}
+	
 	@RequestMapping(value="/getOrdresvalides/{codeDep}",method= RequestMethod.GET )
 	public List<OrdreMission> getOrdresAcetatV(@PathVariable("codeDep") String codeDep){
 		return implordre.getOrdresetatV(codeDep);

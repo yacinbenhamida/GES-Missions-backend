@@ -138,6 +138,11 @@ public class AvoirFraisServiceImpl implements AvoirFraiService {
 		return frais.getTotalFraisTransportPromis(codeDep, year);
 	}
 
+	@Override
+	public double getToalFraisPECProjetPromis(String codeDep, int year, long idProjet) {
+		return frais.getToalFraisPECProjetPromis(codeDep, year, idProjet);
+	}
+
 
 
 }

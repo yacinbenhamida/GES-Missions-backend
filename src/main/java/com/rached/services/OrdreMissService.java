@@ -17,4 +17,5 @@ public interface OrdreMissService extends Services<OrdreMission> {
 	List<OrdreMission> getAllMissBTDA(Date deb,Date fin,String codeDep);
 	List<OrdreMission> getOrdresetatV(String codeDep);
 	List<OrdreMission> getAllOrdresOfDepPourValidationOrdonnateur(String codeDep);
+	List<OrdreMission> getAllOrdresOfDepPourValidationPayeur(String codeDep);
 }
