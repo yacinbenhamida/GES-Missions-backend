@@ -4,6 +4,11 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -110,5 +115,10 @@ public class UserController {
 		return impl.getUsOfUser(u);
 	}
 	
-	
+	 @RequestMapping(value = "/logout", method = RequestMethod.GET)
+	    public void logout(HttpSession session,HttpServletRequest httpServletRequest) {
+		 session.invalidate();
+		 
+	    	 //httpServletRequest.getSession(false).invalidate();
+	    }
 }

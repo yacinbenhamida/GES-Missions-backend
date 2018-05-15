@@ -50,6 +50,13 @@ public class Concerne implements Serializable {
 	
 	@Column(name="nbjours_pec_proj")
 	private long nbJoursPecProj;
+	
+	@Column(name="NOM_ORG_AR")
+	private String nomOrgAr;
+	
+	@Column(name="NOM_ORG_FR")
+	private String nomOrgFr;
+	
 	public Concerne() {
 	}
 
@@ -149,9 +156,22 @@ public class Concerne implements Serializable {
 		this.nbJoursPecProj = nbJoursPecProj;
 	}
 
-	
-	
-	
+	public String getNomOrgAr() {
+		return nomOrgAr;
+	}
+
+	public void setNomOrgAr(String nomOrgAr) {
+		this.nomOrgAr = nomOrgAr;
+	}
+
+	public String getNomOrgFr() {
+		return nomOrgFr;
+	}
+
+	public void setNomOrgFr(String nomOrgFr) {
+		this.nomOrgFr = nomOrgFr;
+	}
+
 	
 
 }

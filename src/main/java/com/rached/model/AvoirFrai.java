@@ -33,11 +33,7 @@ public class AvoirFrai implements Serializable {
 	@Column(name="VALEUR_PREVUE")
 	private double valeurPrevue;
 
-	@Column(name="NOM_ORG_AR")
-	private String nomOrgAr;
-	
-	@Column(name="NOM_ORG_FR")
-	private String nomOrgFr;
+
 	//bi-directional many-to-one association to TypeFrai
 	@ManyToOne
 	@JoinColumn(name="IDTYPEFRAIS")
@@ -113,22 +109,6 @@ public class AvoirFrai implements Serializable {
 	}
 
 	
-
-	public String getNomOrgAr() {
-		return nomOrgAr;
-	}
-
-	public void setNomOrgAr(String nomOrgAr) {
-		this.nomOrgAr = nomOrgAr;
-	}
-
-	public String getNomOrgFr() {
-		return nomOrgFr;
-	}
-
-	public void setNomOrgFr(String nomOrgFr) {
-		this.nomOrgFr = nomOrgFr;
-	}
 
 	public OrdreMission getOrdreMission() {
 		return ordreMission;
