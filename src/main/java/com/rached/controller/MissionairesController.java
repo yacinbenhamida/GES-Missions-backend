@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import com.rached.services.Services;
 
 @RestController
 @RequestMapping("/api/missionaires")
+
 public class MissionairesController {
 	@Autowired
 	@Qualifier("missionaireServicesImpl")
@@ -34,6 +36,15 @@ public class MissionairesController {
 		return implmiss.getAllMissNotHavingMissions(deb, end, deps.getRecordBycode(dep));
 	}
 	
+	@RequestMapping(value="/getCurrentDepOFMIssionaire/{idMiss}",method= RequestMethod.GET )
+	public AffectMissDep getCurrentDepOFMIssionaire(@PathVariable("idMiss") long idMiss){
+		return implmiss.getCurrentDepOFMIssionaire(idMiss);
+	}
+	
+	@RequestMapping(value="/getAllAffectationOfMissionaire/{idMiss}",method= RequestMethod.GET )
+	public List<AffectMissDep>getAllAffectationOfMissionaire(@PathVariable("idMiss") long idMiss){
+		return implmiss.getAllAffectationOfMissionaire(idMiss);
+	}
 	@RequestMapping(value="/getallMissionairesOfDEP/{codeDep}",method= RequestMethod.GET )
 	public List<Missionaire>getAllMissionairesOfDep(@PathVariable("codeDep") String codeDep){
 		return implmiss.getAllMissionairesDep(codeDep);
@@ -62,6 +73,7 @@ public class MissionairesController {
 	}
 	@RequestMapping(value = "/updateAffectMissionaire", method = RequestMethod.POST)
 	public AffectMissDep updateMissionaireAffectation(@RequestBody AffectMissDep elem) {
+	     elem.setDateAffectation(Date.valueOf(LocalDate.now()));
 		 return implmiss.updateMissDep(elem);
 	}
 	

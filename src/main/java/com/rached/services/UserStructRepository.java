@@ -17,6 +17,14 @@ public interface UserStructRepository extends CrudRepository<UserStruct,Serializ
 	@Query("select us from UserStruct us WHERE us.utilisateur = ?1")
 	List<UserStruct> getAllStructsOfUser(Utilisateur u);
 	
-	@Query("select DISTINCT(d) from Departement d,UserStruct us where us.utilisateur = ?1 AND us.departement = d AND us.dateAffectation = (select MAX(usd.dateAffectation) FROM UserStruct usd where usd.utilisateur = ?1)")
+	@Query("select DISTINCT(d) from Departement d,UserStruct us where us.utilisateur = ?1 "
+			+ "AND us.departement = d AND us.dateAffectation = (select DISTINCT(MAX(usd.dateAffectation))"
+			+ " FROM UserStruct usd where usd.utilisateur = ?1 AND usd = us) AND us.idUserStruct"
+			+ "  = (SELECT MAX(p.idUserStruct) from UserStruct p where p.utilisateur = ?1)")
 	Departement getDeptOfUser(Utilisateur u);
+	@Query("select u from UserStruct u where u.idUserStruct = ?1")
+	UserStruct getUsById(long id);
+	
+	@Query("select u from UserStruct u where u.utilisateur.codeUtilisateur = ?1")
+	UserStruct getUsOfUser(long id);
 }

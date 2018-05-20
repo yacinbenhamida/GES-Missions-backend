@@ -15,4 +15,11 @@ public interface MissionAffectRepository extends CrudRepository<AffectMissDep, S
 	
 	@Query("SELECT m from Missionaire m,AffectMissDep a WHERE m=a.missionaire AND a.departement.codeDep = ?1")
 	List<Missionaire> getAllMissOfDep(String codeDep);
+	
+	@Query("SELECT am from AffectMissDep am where am.missionaire.idMissionaire = ?1")
+	List<AffectMissDep> getAllAffectationOfMissionaire(long idMissionaire);
+	@Query("SELECT a from Missionaire m, AffectMissDep a WHERE a.missionaire = m AND m.idMissionaire = ?1 "
+			+ "AND a.dateAffectation = (select MAX(aff.dateAffectation) from AffectMissDep aff where aff.missionaire.idMissionaire = ?1)"
+			+ " AND a.idAffectation = (SELECT DISTINCT(MAX(b.idAffectation)) FROM AffectMissDep b WHERE b.missionaire.idMissionaire = ?1)")
+	AffectMissDep getCurrentDepOfMissionaire(long idMissionaire);
 }

@@ -101,4 +101,14 @@ public class MissionaireServicesImpl implements MissionaireServices {
 	public List<Missionaire> getAllMissNotHavingMissions(Date deb, Date end, Departement d) {
 		return missionaires.getAllMissNotHavingMissions(deb, end, d);
 	}
+
+	@Override
+	public List<AffectMissDep> getAllAffectationOfMissionaire(long idMissionaire) {
+		return affectation.getAllAffectationOfMissionaire(idMissionaire);
+	}
+	
+	@Override
+	public AffectMissDep getCurrentDepOFMIssionaire(long idMissionaire) {
+		return affectation.getCurrentDepOfMissionaire(idMissionaire);
+	}
 }

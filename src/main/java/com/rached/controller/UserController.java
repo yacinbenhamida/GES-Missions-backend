@@ -38,7 +38,11 @@ public class UserController {
 	@Qualifier("departementServiceImpl")
 	private DepartementServices depserv;
 	
-	
+
+	@RequestMapping(value="/getUsOfUser/{code}",method=RequestMethod.GET)
+	public UserStruct getUsOfUser(@PathVariable("code") Long code){
+		return impl.getUsOfUser(code);
+	}
 	@RequestMapping(value="/allUsers",method=RequestMethod.GET)
 	public List<Utilisateur>getAllusers(){
 		return impl.getAllRecords();
@@ -52,7 +56,7 @@ public class UserController {
 	public Departement getDepOfUser(@PathVariable("code") Long code) {
 		Utilisateur u = impl.getRecordById(code);
 		System.out.println("user "+u);
-		System.out.println("departement : "+impl.getDepOfUser(u));
+		//System.out.println("departement : "+impl.getDepOfUser(u));
 		return impl.getDepOfUser(u);
 	}
 	
@@ -72,7 +76,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/userStruct", method = RequestMethod.POST)
-	public void insertUserStruct(@RequestBody UserStruct us) {
+	public UserStruct insertUserStruct(@RequestBody UserStruct us) {
 		//Departement d = depserv.getRecordBycode(us.getDepartement().getCodeDep());
 		System.out.println("us  " +us+"");
 		impl.insertRecord(us.getUtilisateur());
@@ -80,7 +84,7 @@ public class UserController {
 		//us.setDepartement(d);
 		us.setDateAffectation(Date.valueOf(LocalDate.now()));
 		us.setUtilisateur(u);
-		impl.insertuserStruct(us);
+		return impl.insertuserStruct(us);
 	}
 	
 	
@@ -91,7 +95,7 @@ public class UserController {
 	@RequestMapping(value = "/updateUser", method = RequestMethod.POST)
 	public UserStruct updateUser(@RequestBody UserStruct elem) {	
 		System.out.println("userstruct : "+elem);
-		return impl.updateUs(elem.getUtilisateur(), elem.getDepartement());
+		return impl.updateUs(elem);
 	}
 	@RequestMapping(value = "/updateUsers", method = RequestMethod.POST)
 	public Utilisateur updateUsers(@RequestBody Utilisateur u) {	
@@ -114,11 +118,5 @@ public class UserController {
 		Utilisateur u = impl.getRecordById(code);
 		return impl.getUsOfUser(u);
 	}
-	
-	 @RequestMapping(value = "/logout", method = RequestMethod.GET)
-	    public void logout(HttpSession session,HttpServletRequest httpServletRequest) {
-		 session.invalidate();
-		 
-	    	 //httpServletRequest.getSession(false).invalidate();
-	    }
+
 }

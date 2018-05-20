@@ -90,13 +90,12 @@ public class UtilisateurServiceImpl implements UtilisateurServices{
 	}
 
 	@Override
-	public UserStruct updateUs(Utilisateur u, Departement d) {
-		UserStruct us = new UserStruct();
-		us.setUtilisateur(u);
-		us.setDepartement(d);
-	   us.setDateAffectation(Date.valueOf(LocalDate.now()));
-	   repository.save(u);
-	  return repositoryjoint.save(us);   
+	public UserStruct updateUs(UserStruct us) {
+	   UserStruct u = repositoryjoint.getUsById(us.getIdUserStruct());
+	   u.setDateAffectation(Date.valueOf(LocalDate.now()));
+	   u.setDepartement(us.getDepartement());
+	   u.setUtilisateur(us.getUtilisateur());
+	  return repositoryjoint.save(u);   
 	}
 	@Override
 	public List<UserStruct> getUsOfUser(Utilisateur u) {
@@ -119,5 +118,15 @@ public class UtilisateurServiceImpl implements UtilisateurServices{
 	@Override
 	public Utilisateur gettUserByLogin(long login) {
 		return repository.findUserByLogin(login);
+	}
+
+	@Override
+	public UserStruct getUsById(long id) {
+		return repositoryjoint.getUsById(id);
+	}
+	
+@Override
+	public UserStruct getUsOfUser(long id) {
+		return repositoryjoint.getUsOfUser(id);
 	}
 }

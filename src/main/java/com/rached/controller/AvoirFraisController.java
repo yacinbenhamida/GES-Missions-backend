@@ -21,6 +21,7 @@ import com.rached.services.TypeFraisServicesImpl;
 
 @RestController
 @RequestMapping("/api/avoirfrais")
+
 public class AvoirFraisController {
 	@Autowired
 	@Qualifier("avoirFraisServiceImpl")

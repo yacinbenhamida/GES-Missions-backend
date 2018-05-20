@@ -15,6 +15,7 @@ import com.rached.services.Services;
 
 @RestController
 @RequestMapping("/api/classes")
+
 public class ClasseController {
 	@Autowired
 	@Qualifier("classeServiceImpl")

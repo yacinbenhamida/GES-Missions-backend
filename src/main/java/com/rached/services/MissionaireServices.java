@@ -16,4 +16,6 @@ public interface MissionaireServices extends Services<Missionaire> {
 	AffectMissDep getAffById(long id);
 	List<Missionaire> getAllMissionairesDep(String codeDep);
 	List<Missionaire> getAllMissNotHavingMissions(Date deb, Date end,Departement d);
+	List<AffectMissDep> getAllAffectationOfMissionaire(long idMissionaire);
+	AffectMissDep getCurrentDepOFMIssionaire(long idMissionaire);
 }
