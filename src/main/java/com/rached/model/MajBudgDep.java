@@ -33,10 +33,10 @@ public class MajBudgDep implements Serializable {
 	private String refBudgTransport;
 
 	@Column(name="VALEUR_BUDG_MISSION")
-	private long valeurBudgMission;
+	private double valeurBudgMission;
 
 	@Column(name="VALEUR_BUDG_TRANSPORT")
-	private long valeurBudgTransport;
+	private double valeurBudgTransport;
 
 	
 	@Column(name="ETAT")
@@ -92,19 +92,19 @@ public class MajBudgDep implements Serializable {
 		this.refBudgTransport = refBudgTransport;
 	}
 
-	public long getValeurBudgMission() {
+	public double getValeurBudgMission() {
 		return this.valeurBudgMission;
 	}
 
-	public void setValeurBudgMission(long valeurBudgMission) {
+	public void setValeurBudgMission(double valeurBudgMission) {
 		this.valeurBudgMission = valeurBudgMission;
 	}
 
-	public long getValeurBudgTransport() {
+	public double getValeurBudgTransport() {
 		return this.valeurBudgTransport;
 	}
 
-	public void setValeurBudgTransport(long valeurBudgTransport) {
+	public void setValeurBudgTransport(double valeurBudgTransport) {
 		this.valeurBudgTransport = valeurBudgTransport;
 	}
 

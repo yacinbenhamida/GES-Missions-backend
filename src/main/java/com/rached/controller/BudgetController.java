@@ -126,6 +126,7 @@ public class BudgetController {
 	@RequestMapping(value = "/getBudgetDep/{code}/{year}", method = RequestMethod.GET )
 	public AvoirBudgDep getBudgetDep(@PathVariable("code") String code,@PathVariable("year") int annee) {
 		Departement d = depserv.getRecordBycode(code);
+		System.out.println(d.getLibDepAr());
 		return impldep.getBudgOfdep(d,annee);
 	}
 	@RequestMapping(value = "/allDepBudgets", method = RequestMethod.GET )
@@ -317,5 +318,10 @@ public class BudgetController {
 	@RequestMapping(value="/getSommeBudgetsTransport/{codeDep}/{year}",method = RequestMethod.GET)
 	public double sommebudgTransport(@PathVariable("codeDep")String codeDep,@PathVariable("year")int year){
 		 return impldep.getSumBudgObtenusTransport(codeDep, year);
+	}
+	// budgets projets of dep
+	@RequestMapping(value="/getAllBudgetsProjets/{codeDep}/{year}",method = RequestMethod.GET)
+	public List<AvoirBudgProg> allBudgProgOfDEP(@PathVariable("codeDep")String codeDep,@PathVariable("year")int year){
+		 return impl.getAllBudgetsProgOfDep(codeDep, year);
 	}
 }

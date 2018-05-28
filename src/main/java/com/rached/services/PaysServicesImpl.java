@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.rached.model.Pays;
-import com.rached.model.Projet;
 @Service
 @Qualifier("paysServicesImpl")
 public class PaysServicesImpl implements Services<Pays> {
@@ -18,7 +17,7 @@ public class PaysServicesImpl implements Services<Pays> {
 	private PaysRepository repo;
 	@Override
 	public List<Pays> getAllRecords() {
-		List<Pays> res = new ArrayList();
+		List<Pays> res = new ArrayList<Pays>();
 		Iterator<Pays>it = repo.findAll().iterator();
 		while(it.hasNext()) {
 			res.add(it.next());

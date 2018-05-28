@@ -3,10 +3,8 @@ package com.rached.services;
 import java.util.List;
 
 import com.rached.model.AvoirBudgDep;
-import com.rached.model.AvoirBudgProg;
 import com.rached.model.Departement;
 import com.rached.model.MajBudgDep;
-import com.rached.model.MajBudgProg;
 import com.rached.model.Utilisateur;
 
 public interface AvoirBudgDepServices extends Services<AvoirBudgDep> {

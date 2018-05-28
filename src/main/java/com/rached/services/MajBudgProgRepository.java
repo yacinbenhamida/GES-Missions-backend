@@ -8,7 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import com.rached.model.Departement;
-import com.rached.model.MajBudgDep;
 import com.rached.model.MajBudgProg;
 import com.rached.model.Projet;
 import com.rached.model.Utilisateur;

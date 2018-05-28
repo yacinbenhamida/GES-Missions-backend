@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.rached.model.AvoirFrai;
 import com.rached.model.Concerne;
-import com.rached.model.Pays;
 import com.rached.model.Support;
 import com.rached.model.TypeFrai;
 @Service
@@ -94,7 +93,7 @@ public class AvoirFraisServiceImpl implements AvoirFraiService {
 
 	@Override
 	public List<TypeFrai> getAllTypes() {
-		List<TypeFrai> res = new ArrayList();
+		List<TypeFrai> res = new ArrayList<TypeFrai>();
 		Iterator<TypeFrai>it = typefrais.findAll().iterator();
 		while(it.hasNext()) {
 			res.add(it.next());

@@ -32,7 +32,7 @@ public class UserStruct implements Serializable {
 	private Departement departement;
 
 	//bi-directional many-to-one association to Utilisateur
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="CODE_UTILISATEUR")
 	private Utilisateur utilisateur;
 	

@@ -28,7 +28,7 @@ public class AvoirBudgProg implements Serializable {
 	private long idbudgProg;
 
 	@Column(name="ANNEE_ATTR")
-	private BigDecimal anneeAttr;
+	private int anneeAttr;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="DATE_BUDG")
@@ -64,11 +64,11 @@ public class AvoirBudgProg implements Serializable {
 		this.idbudgProg = idbudgProg;
 	}
 
-	public BigDecimal getAnneeAttr() {
+	public int getAnneeAttr() {
 		return this.anneeAttr;
 	}
 
-	public void setAnneeAttr(BigDecimal anneeAttr) {
+	public void setAnneeAttr(int anneeAttr) {
 		this.anneeAttr = anneeAttr;
 	}
 

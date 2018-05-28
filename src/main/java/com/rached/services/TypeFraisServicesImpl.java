@@ -7,8 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import com.rached.model.Theme;
 import com.rached.model.TypeFrai;
 @Service
 @Qualifier("typeFraisServicesImpl")
@@ -18,7 +16,7 @@ public class TypeFraisServicesImpl implements Services<TypeFrai> {
 	TypeFraiRepository repo;
 	@Override
 	public List<TypeFrai> getAllRecords() {
-		List<TypeFrai> res = new ArrayList();
+		List<TypeFrai> res = new ArrayList<TypeFrai>();
 		Iterator<TypeFrai>it = repo.findAll().iterator();
 		while(it.hasNext()) {
 			res.add(it.next());

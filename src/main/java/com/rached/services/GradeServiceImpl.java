@@ -18,7 +18,7 @@ public class GradeServiceImpl implements Services<Grade> {
 
 	@Override
 	public List<Grade> getAllRecords() {
-		List<Grade> res = new ArrayList();
+		List<Grade> res = new ArrayList<Grade>();
 		Iterator<Grade>it = repository.findAll().iterator();
 		while(it.hasNext()) {
 			res.add(it.next());

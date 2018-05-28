@@ -8,12 +8,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.rached.model.AvoirBudgDep;
 import com.rached.model.Departement;
-import com.rached.model.Fonction;
 import com.rached.model.MajBudgDep;
 import com.rached.model.TypeDep;
 @Service
@@ -33,7 +31,7 @@ public class DepartementServiceImpl implements DepartementServices{
 	
 	@Override
 	public List<Departement> getAllRecords() {
-		List<Departement> res = new ArrayList();
+		List<Departement> res = new ArrayList<Departement>();
 		Iterator<Departement>it = repository.findAll().iterator();
 		while(it.hasNext()) {
 			res.add(it.next());
@@ -95,7 +93,7 @@ public class DepartementServiceImpl implements DepartementServices{
 	public MajBudgDep  updateBudgDep( AvoirBudgDep budget) {
 		MajBudgDep maj = new MajBudgDep();
 		String date = String.valueOf(LocalDate.now());
-		maj.setDateMaj(Date.valueOf(LocalDate.now())); //(Integer.valueOf(date.substring(6, 10)));
+		maj.setDateMaj(Date.valueOf(LocalDate.now()));
 		maj.setBudget(budget);
 		maj.setRefBudgMission(budget.getRefBudgMission());
 		maj.setValeurBudgMission(maj.getValeurBudgMission());

@@ -6,9 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import com.rached.model.AvoirBudgDep;
 import com.rached.model.AvoirBudgProg;
-import com.rached.model.Departement;
 import com.rached.model.Projet;
 
 public interface AvoirBudgProjetRepository extends CrudRepository<AvoirBudgProg, Serializable> {
@@ -27,4 +25,6 @@ public interface AvoirBudgProjetRepository extends CrudRepository<AvoirBudgProg,
 	@Query("select a FROM AvoirBudgProg a,MajBudgProg m where a.projet = ?1 AND m.budgetprojet=a AND m.etat='S'")
 	AvoirBudgProg getBudgOfProg(Projet proj);
 	
+	@Query("select a FROM AvoirBudgProg a where a.projet.departement.codeDep = ?1 AND a.anneeAttr = ?2")
+	List<AvoirBudgProg> getAllBudgetsProgOfDep(String codeDep, int year);
 }

@@ -12,11 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rached.model.Departement;
 import com.rached.model.TypeDep;
-import com.rached.model.Utilisateur;
-import com.rached.services.DepartementServiceImpl;
 import com.rached.services.DepartementServices;
-import com.rached.services.Services;
-import com.rached.services.UtilisateurServiceImpl;
 @RestController
 @RequestMapping("/api/departement")
 public class DepartementController {

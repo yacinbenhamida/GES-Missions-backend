@@ -8,9 +8,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import com.rached.model.AvoirFrai;
-import com.rached.model.Missionaire;
 import com.rached.model.OrdreMission;
 @Service
 @Qualifier("ordreMissionServiceImpl")

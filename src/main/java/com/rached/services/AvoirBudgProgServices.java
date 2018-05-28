@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.rached.model.AvoirBudgProg;
 import com.rached.model.Departement;
-import com.rached.model.MajBudgDep;
 import com.rached.model.MajBudgProg;
 import com.rached.model.Projet;
 import com.rached.model.Utilisateur;
@@ -23,6 +22,6 @@ public interface AvoirBudgProgServices extends Services<AvoirBudgProg> {
 	MajBudgProg getMajDepBudgByID(Long id);
 	MajBudgProg updateMajBudgProg(MajBudgProg maj);
 	void cancelMajBprog(MajBudgProg maj);
-	
+	List<AvoirBudgProg> getAllBudgetsProgOfDep(String codeDep, int year);
 	
 }

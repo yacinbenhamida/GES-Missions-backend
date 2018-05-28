@@ -4,27 +4,18 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rached.model.Departement;
 import com.rached.model.UserStruct;
 import com.rached.model.Utilisateur;
-import com.rached.services.DepartementServiceImpl;
 import com.rached.services.DepartementServices;
-import com.rached.services.Services;
-import com.rached.services.UtilisateurServiceImpl;
 import com.rached.services.UtilisateurServices;
 @RestController
 @RequestMapping("/api/users")
@@ -87,6 +78,10 @@ public class UserController {
 		return impl.insertuserStruct(us);
 	}
 	
+	@RequestMapping(value="/getverifLoginUser/{login}",method = RequestMethod.GET)
+	public Utilisateur verifLoginCredentialsUser(@PathVariable("login")long login) {
+		return impl.gettUserByLogin(login);
+	}
 	
 	@RequestMapping(value="/verifLoginUser/{login}/{password}",method = RequestMethod.GET)
 	public Utilisateur getLoginCredentialsUser(@PathVariable("login")long login ,@PathVariable("password")String pw) {
@@ -94,7 +89,6 @@ public class UserController {
 	}
 	@RequestMapping(value = "/updateUser", method = RequestMethod.POST)
 	public UserStruct updateUser(@RequestBody UserStruct elem) {	
-		System.out.println("userstruct : "+elem);
 		return impl.updateUs(elem);
 	}
 	@RequestMapping(value = "/updateUsers", method = RequestMethod.POST)

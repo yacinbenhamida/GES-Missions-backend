@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rached.model.Motcle;
-import com.rached.model.Projet;
 import com.rached.model.Theme;
 import com.rached.services.MotCleService;
 import com.rached.services.Services;
-import static java.lang.Math.toIntExact;
 @RestController
 @RequestMapping("/api/motcles")
 public class MotcleController {

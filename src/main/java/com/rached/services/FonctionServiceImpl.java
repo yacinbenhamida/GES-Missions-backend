@@ -18,7 +18,7 @@ public class FonctionServiceImpl implements Services<Fonction>{
 
 	@Override
 	public List<Fonction> getAllRecords() {
-		List<Fonction> res = new ArrayList();
+		List<Fonction> res = new ArrayList<Fonction>();
 		Iterator<Fonction>it = fctrepository.findAll().iterator();
 		while(it.hasNext()) {
 			res.add(it.next());

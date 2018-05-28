@@ -17,7 +17,7 @@ public class CategorieServiceImpl implements Services<Categorie> {
 
 	@Override
 	public List<Categorie> getAllRecords() {
-		List<Categorie> res = new ArrayList();
+		List<Categorie> res = new ArrayList<Categorie>();
 		Iterator<Categorie>it = repository.findAll().iterator();
 		while(it.hasNext()) {
 			res.add(it.next());

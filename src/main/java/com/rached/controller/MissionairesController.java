@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,11 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rached.model.AffectMissDep;
-import com.rached.model.Grade;
 import com.rached.model.Missionaire;
 import com.rached.services.DepartementServices;
 import com.rached.services.MissionaireServices;
-import com.rached.services.Services;
 
 @RestController
 @RequestMapping("/api/missionaires")

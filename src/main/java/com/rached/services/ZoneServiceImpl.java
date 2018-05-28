@@ -7,8 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import com.rached.model.Utilisateur;
 import com.rached.model.Zonepays;
 @Service
 @Qualifier("zoneServiceImpl")
@@ -18,7 +16,7 @@ public class ZoneServiceImpl implements Services<Zonepays> {
 	private ZoneRepository repo;
 	@Override
 	public List<Zonepays> getAllRecords() {
-		List<Zonepays> res = new ArrayList();
+		List<Zonepays> res = new ArrayList<Zonepays>();
 		Iterator<Zonepays>it = repo.findAll().iterator();
 		while(it.hasNext()) {
 			res.add(it.next());

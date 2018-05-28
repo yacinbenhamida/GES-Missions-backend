@@ -2,7 +2,6 @@ package com.rached.services;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.rached.model.Departement;
-import com.rached.model.Fonction;
 import com.rached.model.UserStruct;
 import com.rached.model.Utilisateur;
 @Service
@@ -28,7 +26,7 @@ public class UtilisateurServiceImpl implements UtilisateurServices{
 	
 	@Override
 	public List<Utilisateur> getAllRecords() {
-		List<Utilisateur> res = new ArrayList();
+		List<Utilisateur> res = new ArrayList<Utilisateur>();
 		Iterator<Utilisateur>it = repository.findAll().iterator();
 		while(it.hasNext()) {
 			res.add(it.next());

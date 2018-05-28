@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.rached.model.AvoirBudgDep;
-import com.rached.model.AvoirBudgProg;
 import com.rached.model.Departement;
 import com.rached.model.MajBudgDep;
 import com.rached.model.Utilisateur;
@@ -23,7 +22,7 @@ public class AvoirBudgDepServicesImpl implements AvoirBudgDepServices {
 	MajBudgDepartementRepository repomaj;
 	@Override
 	public List<AvoirBudgDep> getAllRecords() {
-		List<AvoirBudgDep> res = new ArrayList();
+		List<AvoirBudgDep> res = new ArrayList<AvoirBudgDep>();
 		Iterator<AvoirBudgDep>it = repo.findAll().iterator();
 		while(it.hasNext()) {
 			res.add(it.next());
@@ -71,7 +70,7 @@ public class AvoirBudgDepServicesImpl implements AvoirBudgDepServices {
 
 	@Override
 	public List<MajBudgDep> getAllMajsbudgetdep() {
-		List<MajBudgDep> res = new ArrayList();
+		List<MajBudgDep> res = new ArrayList<MajBudgDep> ();
 		Iterator<MajBudgDep>it = repomaj.findAll().iterator();
 		while(it.hasNext()) {
 			res.add(it.next());

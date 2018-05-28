@@ -34,10 +34,10 @@ public class AvoirBudgDep implements Serializable {
 	private Date dateBudg;
 
 	@Column(name="MONTANT_BUDG_MISSION")
-	private long montantBudgMission;
+	private double montantBudgMission;
 
 	@Column(name="MONTANT_BUDG_TRANSPORT")
-	private long montantBudgTransport;
+	private double montantBudgTransport;
 
 	@Column(name="REF_BUDG_MISSION")
 	private String refBudgMission;
@@ -46,10 +46,10 @@ public class AvoirBudgDep implements Serializable {
 	private String refBudgTransport;
 	
 	@Column(name="TOTAL_MISSION")
-	private long totalMission;
+	private double totalMission;
 	
 	@Column(name="TOTAL_TRANSPORT")
-	private long totalTransport;
+	private double totalTransport;
 	
 	//bi-directional many-to-one association to Departement
 	@ManyToOne
@@ -88,19 +88,19 @@ public class AvoirBudgDep implements Serializable {
 		this.dateBudg = dateBudg;
 	}
 
-	public long getMontantBudgMission() {
+	public double getMontantBudgMission() {
 		return this.montantBudgMission;
 	}
 
-	public void setMontantBudgMission(long montantBudgMission) {
+	public void setMontantBudgMission(double montantBudgMission) {
 		this.montantBudgMission = montantBudgMission;
 	}
 
-	public long getMontantBudgTransport() {
+	public double getMontantBudgTransport() {
 		return this.montantBudgTransport;
 	}
 
-	public void setMontantBudgTransport(long montantBudgTransport) {
+	public void setMontantBudgTransport(double montantBudgTransport) {
 		this.montantBudgTransport = montantBudgTransport;
 	}
 
@@ -137,19 +137,19 @@ public class AvoirBudgDep implements Serializable {
 
 	
 	
-	public long getTotalMission() {
+	public double getTotalMission() {
 		return totalMission;
 	}
 
-	public void setTotalMission(long totalMission) {
+	public void setTotalMission(double totalMission) {
 		this.totalMission = totalMission;
 	}
 
-	public long getTotalTransport() {
+	public double getTotalTransport() {
 		return totalTransport;
 	}
 
-	public void setTotalTransport(long totalTransport) {
+	public void setTotalTransport(double totalTransport) {
 		this.totalTransport = totalTransport;
 	}
 

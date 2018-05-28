@@ -23,7 +23,7 @@ public class AvoirBudgProgServicesImpl implements AvoirBudgProgServices {
 	MajBudgProgRepository repomaj;
 	@Override
 	public List<AvoirBudgProg> getAllRecords() {
-		List<AvoirBudgProg> res = new ArrayList();
+		List<AvoirBudgProg> res = new ArrayList<AvoirBudgProg>();
 		Iterator<AvoirBudgProg>it = repo.findAll().iterator();
 		while(it.hasNext()) {
 			res.add(it.next());
@@ -71,7 +71,7 @@ public class AvoirBudgProgServicesImpl implements AvoirBudgProgServices {
 
 	@Override
 	public List<MajBudgProg> getAllMajsbudgetprojet() {
-		List<MajBudgProg> res = new ArrayList();
+		List<MajBudgProg> res = new ArrayList<MajBudgProg>();
 		Iterator<MajBudgProg>it = repomaj.findAll().iterator();
 		while(it.hasNext()) {
 			res.add(it.next());
@@ -130,5 +130,10 @@ public class AvoirBudgProgServicesImpl implements AvoirBudgProgServices {
 	public void deleteMajBudgprj(long idMaj) {
 		repomaj.delete(idMaj);
 		
+	}
+
+	@Override
+	public List<AvoirBudgProg> getAllBudgetsProgOfDep(String codeDep, int year) {
+		return repo.getAllBudgetsProgOfDep(codeDep, year);
 	}
 }

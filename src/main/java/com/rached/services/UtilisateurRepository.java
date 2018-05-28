@@ -10,6 +10,8 @@ import com.rached.model.Utilisateur;
 public interface UtilisateurRepository extends CrudRepository<Utilisateur, Serializable>{
 	@Query("select u from Utilisateur u where u.login = ?1 and u.motDePasse = ?2")
 	Utilisateur findUserByCodeProfileAndName(long login,String pw);
+	
+	
 	@Query ("select MAX(u.codeUtilisateur) from Utilisateur u")
 	Long findLastaddedUser();
 	

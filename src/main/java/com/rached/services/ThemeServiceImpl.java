@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.rached.model.Theme;
-import com.rached.model.Zonepays;
 @Service
 @Qualifier("themeServiceImpl")
 public class ThemeServiceImpl implements Services<Theme> {
@@ -17,7 +16,7 @@ public class ThemeServiceImpl implements Services<Theme> {
 	private ThemeRepository repo;
 	@Override
 	public List<Theme> getAllRecords() {
-		List<Theme> res = new ArrayList();
+		List<Theme> res = new ArrayList<Theme>();
 		Iterator<Theme>it = repo.findAll().iterator();
 		while(it.hasNext()) {
 			res.add(it.next());

@@ -1,15 +1,11 @@
 package com.rached.services;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-
-import com.rached.model.Departement;
 import com.rached.model.Mission;
-import com.rached.model.OrdreMission;
 
 public interface MissionRepository extends CrudRepository<Mission, Serializable> {
 	@Query("select m from Mission m where m.departement.codeDep = ?1")

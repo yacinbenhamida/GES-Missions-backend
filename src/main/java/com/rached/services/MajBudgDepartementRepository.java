@@ -16,9 +16,9 @@ public interface MajBudgDepartementRepository extends CrudRepository<MajBudgDep,
 			+ " AND m.etat='O' AND m.budget = a AND  SUBSTR(to_char(SYSDATE,'dd/mm/yyyy'),7,5) = to_char(a.anneeAttr)")
 	List<MajBudgDep> getAllMajBudgetsOfdep(String codeDep);
 	
-	@Query("select m from MajBudgDep m,AvoirBudgDep a,UserStruct u,Departement d "
-			+ "where a.departement=?2  AND u.utilisateur = ?1 AND u.departement = d"
-			+ " AND a.departement = d  AND m.etat != 'R'  AND  SUBSTR(to_char(SYSDATE,'dd/mm/yyyy'),7,5) = to_char(a.anneeAttr)")
+	@Query("select m from MajBudgDep m,AvoirBudgDep a,UserStruct u "
+			+ "where a.departement=?2 AND u.departement = ?2 AND u.utilisateur = ?1  AND m.etat != 'R'"
+			+ "  AND  SUBSTR(to_char(SYSDATE,'dd/mm/yyyy'),7,5) = to_char(a.anneeAttr) AND m.budget = a")
 	List<MajBudgDep> getAllMajBudgDonebyUser(Utilisateur user,Departement dep);
 	
 	@Query("select m from MajBudgDep m where m.idMajBdugDep = ?1")

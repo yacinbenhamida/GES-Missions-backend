@@ -2,9 +2,6 @@ package com.rached.services;
 
 import java.sql.Date;
 import java.util.List;
-
-import com.rached.model.Mission;
-import com.rached.model.Missionaire;
 import com.rached.model.OrdreMission;
 
 public interface OrdreMissService extends Services<OrdreMission> {
