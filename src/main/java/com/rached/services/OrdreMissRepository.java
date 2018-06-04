@@ -44,18 +44,18 @@ public interface OrdreMissRepository extends CrudRepository<OrdreMission, Serial
 			 AND O.ETAT='V' AND SUBSTR(M.CODE_DEP,3,1) = "55"
 	 */
 	@Query(nativeQuery=true,value="SELECT O.* FROM ORDRE_MISSION O,MISSION M WHERE "
-			+ " O.ID_MISSION=M.ID_MISSION  AND O.ETAT='V'  AND REGEXP_LIKE(M.CODE_DEP,:codeDep)")
+			+ " O.ID_MISSION=M.ID_MISSION  AND (O.ETAT='V' OR O.ETAT='PA' OR O.ETAT='S')  AND REGEXP_LIKE(M.CODE_DEP,:codeDep)")
 	List<OrdreMission> getOrdresetatV(@Param("codeDep")String codeDep);
 	
 	@Query("select DISTINCT(om) from OrdreMission om,Mission m, Pays p,Concerne c"
 			+ " WHERE om.mission=m AND c.ordre = om AND c.pays.idpays=?1 AND m.dateDepartP BETWEEN ?2 AND ?3 AND"
-			+ " m.dateArriveP BETWEEN ?2 AND ?3  AND m.departement.codeDep = ?4  AND om.etat='S'")
+			+ " m.dateArriveP BETWEEN ?2 AND ?3  AND m.departement.codeDep = ?4  AND ( om.etat='S' OR om.etat='PA')")
 	List<OrdreMission> getAllMissionsBTDAC(long idpays,Date deb,Date fin,String codeDep);
 	
 
 	@Query("select DISTINCT(om) from OrdreMission om,Mission m, Pays p,Concerne c"
 			+ " WHERE om.mission=m AND c.ordre = om  AND m.dateDepartP BETWEEN ?1 AND ?2 AND"
-			+ " m.dateArriveP BETWEEN ?1 AND ?2  AND m.departement.codeDep = ?3 AND om.etat='S'")
+			+ " m.dateArriveP BETWEEN ?1 AND ?2  AND m.departement.codeDep = ?3 AND( om.etat='S' OR om.etat='PA')")
 	List<OrdreMission> getAllMissionsBTDA(Date deb,Date fin,String codeDep);
 	
 	

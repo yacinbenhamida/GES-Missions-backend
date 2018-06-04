@@ -22,7 +22,7 @@ public interface AvoirBudgProjetRepository extends CrudRepository<AvoirBudgProg,
 	@Query("select a FROM AvoirBudgProg a WHERE a.refBudgProg = ?1")
 	AvoirBudgProg getBudgProgByRef(Long ref);
 	
-	@Query("select a FROM AvoirBudgProg a,MajBudgProg m where a.projet = ?1 AND m.budgetprojet=a AND m.etat='S'")
+	@Query("select a FROM AvoirBudgProg a,MajBudgProg m where a.projet = ?1 AND m.budgetprojet=a AND (m.etat='S' OR m.etat='PA')")
 	AvoirBudgProg getBudgOfProg(Projet proj);
 	
 	@Query("select a FROM AvoirBudgProg a where a.projet.departement.codeDep = ?1 AND a.anneeAttr = ?2")
