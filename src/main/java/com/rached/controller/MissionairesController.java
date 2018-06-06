@@ -19,7 +19,6 @@ import com.rached.services.MissionaireServices;
 
 @RestController
 @RequestMapping("/api/missionaires")
-
 public class MissionairesController {
 	@Autowired
 	@Qualifier("missionaireServicesImpl")

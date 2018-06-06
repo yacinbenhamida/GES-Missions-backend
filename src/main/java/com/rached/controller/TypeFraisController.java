@@ -15,7 +15,6 @@ import com.rached.services.TypeFraisServicesImpl;
 
 @RestController
 @RequestMapping("/api/typefrais")
-
 public class TypeFraisController {
 	@Autowired
 	@Qualifier("typeFraisServicesImpl")

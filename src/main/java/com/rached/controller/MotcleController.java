@@ -16,6 +16,7 @@ import com.rached.services.MotCleService;
 import com.rached.services.Services;
 @RestController
 @RequestMapping("/api/motcles")
+
 public class MotcleController {
 	@Autowired
 	@Qualifier("motclesServiceImpl")

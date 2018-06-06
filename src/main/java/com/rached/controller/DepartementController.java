@@ -15,6 +15,7 @@ import com.rached.model.TypeDep;
 import com.rached.services.DepartementServices;
 @RestController
 @RequestMapping("/api/departement")
+
 public class DepartementController {
 
 	@Autowired

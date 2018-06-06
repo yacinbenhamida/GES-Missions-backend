@@ -15,7 +15,6 @@ import com.rached.services.Services;
 
 @RestController
 @RequestMapping("/api/categories")
-
 public class CategorieController {
 	@Autowired
 	@Qualifier("categorieServiceImpl")

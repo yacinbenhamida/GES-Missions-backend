@@ -23,7 +23,7 @@ public class MissionaireServicesImpl implements MissionaireServices {
 	
 	@Override
 	public List<Missionaire> getAllRecords() {
-		List<Missionaire> res = new ArrayList();
+		List<Missionaire> res = new ArrayList<Missionaire>();
 		Iterator<Missionaire>it = missionaires.findAll().iterator();
 		while(it.hasNext()) {
 			res.add(it.next());
